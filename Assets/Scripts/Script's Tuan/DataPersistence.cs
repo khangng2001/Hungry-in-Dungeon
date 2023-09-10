@@ -20,7 +20,7 @@ public class DataPersistence : MonoBehaviour
 
     //----------------------------------------------------------------------------------------------------------------------------
 
-    private async void Awake()
+    private void Awake()
     {
         try
         {
