@@ -222,10 +222,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goToSceneName: SingletonTest
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 2048
-  radiusCheck: 0
 --- !u!61 &18568007
 BoxCollider2D:
   m_ObjectHideFlags: 0
