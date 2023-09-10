@@ -44,13 +44,14 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void SaveDataRecipe()
+    public void SaveDataRecipe(RecipeSO recipeSO)
     {
-        for (int i = 0; i < recipes.Count; i++)
+        recipes.Add(recipeSO);
+        /*for (int i = 0; i < recipes.Count; i++)
         {
             recipes[i] = RecipeManager.instance.SaveDataRecipe(i);
-            //recipes.Add(recipes[i]);
-        }
+            recipes.Add(recipes[i]);
+        }*/
     }
     public void LoadDataRecipe()
     {

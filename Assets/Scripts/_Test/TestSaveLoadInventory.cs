@@ -29,9 +29,9 @@ public class TestSaveLoadInventory : MonoBehaviour, IDataPersistence
         }
 
         /*RECIPE*/
-        if (data.CoinPaper >= 0)
+        if (data.RecipeListCount >= 0)
         {
-            for (int i = 0; i < data.CoinPaper; i++)
+            for (int i = 0; i < data.RecipeListCount; i++)
             {
                 RecipeManager.instance.AddRecipe(recipes[i]);
             }
@@ -61,6 +61,6 @@ public class TestSaveLoadInventory : MonoBehaviour, IDataPersistence
         }
 
         /*RECIPE*/
-        data.CoinPaper = RecipeManager.instance.listOfPaperUI.Count;
+        data.RecipeListCount = RecipeManager.instance.listOfPaperUI.Count;
     }
 }

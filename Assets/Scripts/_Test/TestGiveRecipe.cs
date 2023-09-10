@@ -5,15 +5,23 @@ public class TestGiveRecipe : MonoBehaviour
 {
     [SerializeField] private List<RecipeSO> recipePapers;
 
-    public void AddRecipe()
+    public void GiveRecipe()
     {
-        RecipeManager.instance.AddRecipe(recipePapers[0]);
-        recipePapers.Remove(recipePapers[0]);
-        GameManager.instance.SaveDataRecipe();
-
-        if (recipePapers.Count == 0)
+        if (RecipeManager.instance.listOfPaperUI.Count == 0)
         {
-            //unactive this script
+            AddRecipe();
+        } else if (RecipeManager.instance.listOfPaperUI.Count > 0) {
+            //check coinPaper
+        }
+    }
+    private void AddRecipe()
+    {
+        if (recipePapers.Count > 0)
+        {
+            RecipeManager.instance.AddRecipe(recipePapers[0]);
+            recipePapers[0] = null;
+            //recipePapers.Remove(recipePapers[0]);
+            GameManager.instance.SaveDataRecipe(recipePapers[0]);
         }
     }
 }

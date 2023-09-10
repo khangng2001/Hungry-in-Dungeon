@@ -34,6 +34,7 @@ public class RecipeManager : MonoBehaviour
     {
         RecipePaperUI paperUI = Instantiate(recipePaperPrefab, Vector3.zero, Quaternion.identity);
         paperUI.transform.SetParent(contentPanel);
+        paperUI.transform.localScale = Vector3.one;
         paperUI.recipeSO = recipeSO;
         paperUI.SetData(paperUI.recipeSO.RecipeImage);
         listOfPaperUI.Add(paperUI);
@@ -47,7 +48,7 @@ public class RecipeManager : MonoBehaviour
     }
 
     //Save,LoadData
-    public RecipeSO SaveDataRecipe(int i)
+    /*public RecipeSO SaveDataRecipe(int i)
     {
         if (listOfPaperUI[i] != null)
         {
@@ -57,7 +58,7 @@ public class RecipeManager : MonoBehaviour
         {
             return null;
         }
-    }
+    }*/
     /*public void LoadDataRecipe()
     {
     }*/
