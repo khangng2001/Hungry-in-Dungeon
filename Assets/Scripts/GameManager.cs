@@ -5,17 +5,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
     [Header("Inventory")]
     public List<ItemSO> item;   //item.length = inventorySlot.length = 7
     public List<int> count;
-
-
+    [Header("Recipe")]
+    public List<RecipeSO> recipes;
     private void Awake()
     {
         MakeSingleton();
     }
-
     void MakeSingleton()
     {
         if (instance != null)
@@ -28,7 +26,6 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-
     public void SaveDataInventory()
     {
         for (int i = 0; i < item.Count; i++)
@@ -37,7 +34,6 @@ public class GameManager : MonoBehaviour
             count[i] = InventoryManager.instance.SaveDataCount(i);
         }
     }
-
     public void LoadDataInventory()
     {
         for (int i = 0; i < item.Count; i++)
@@ -45,6 +41,24 @@ public class GameManager : MonoBehaviour
             if (item[i] != null)
             {
                 InventoryManager.instance.LoadData(i, item[i], count[i]);
+            }
+        }
+    }
+    public void SaveDataRecipe()
+    {
+        for (int i = 0; i < recipes.Count; i++)
+        {
+            recipes[i] = RecipeManager.instance.SaveDataRecipe(i);
+            //recipes.Add(recipes[i]);
+        }
+    }
+    public void LoadDataRecipe()
+    {
+        for (int i = 0; i < recipes.Count; i++)
+        {
+            if (recipes[i] != null)
+            {
+                RecipeManager.instance.AddRecipe(recipes[i]);
             }
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDataPersistence
 {
     // HEALTH PLAYER
     [SerializeField] private float maxHealth = 0f;
@@ -279,6 +279,23 @@ public class PlayerController : MonoBehaviour
     public float GetSpeed()
     {
         return moveSpeed;
+    }
+
+
+    // ======================= SAVE AND LOAD DATA =========================
+    public void LoadData(GameData data)
+    {
+        transform.position = new Vector3(data.Position.X, data.Position.Y, data.Position.Z);
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.Position = new Position
+        {
+            X = transform.position.x,
+            Y = transform.position.y,
+            Z = transform.position.z
+        };
     }
     // ===========================================
 }
