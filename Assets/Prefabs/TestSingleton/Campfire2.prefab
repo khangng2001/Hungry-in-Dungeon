@@ -184,7 +184,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.025902271, y: 0}
+  m_Offset: {x: 0.030958176, y: -0.005056381}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -195,7 +195,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3374856, y: 1.4099379}
+  m_Size: {x: 1.2262573, y: 1.0560303}
   m_EdgeRadius: 0
 --- !u!114 &4719922923798626719
 MonoBehaviour:
@@ -228,11 +228,16 @@ MonoBehaviour:
   - {fileID: 0}
   recipes:
   - eggnullnull
+  - nulleggnull
+  - nullnullegg
   - eggonionnull
   recipeResults:
   - {fileID: 11400000, guid: 41ef95938417e3847a46c40265834742, type: 2}
+  - {fileID: 11400000, guid: 41ef95938417e3847a46c40265834742, type: 2}
+  - {fileID: 11400000, guid: 41ef95938417e3847a46c40265834742, type: 2}
   - {fileID: 11400000, guid: 3795c5134c789bd4b8c350c989a8f737, type: 2}
   inventoryItemPrefab: {fileID: 1501300417021963823, guid: ba2015c2943fb4747914db4a2d191434, type: 3}
-  distanceToPlayer: 0
-  player: {fileID: 0}
-  campfire: {fileID: 4719922923798626706}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  radiusCheck: 1
