@@ -19,24 +19,10 @@ public class InventoryManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        //MakeSingleton();
         tempMaxStackedItems = maxStackedItems;
 
         GameManager.instance.LoadDataInventory();
     }
-
-    /*void MakeSingleton()
-    {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    }*/
 
     private void Update()
     {
@@ -54,7 +40,7 @@ public class InventoryManager : MonoBehaviour
         GameManager.instance.SaveDataInventory();
     }
 
-    void ChangeSelectedSlot(int newValue)
+    private void ChangeSelectedSlot(int newValue)
     {
         selectedSlot = newValue;
     }
@@ -114,6 +100,7 @@ public class InventoryManager : MonoBehaviour
                 ItemSO item = itemInSlot.item;
                 if (use == true)
                 {
+                    //HAm player.instance.add(item.health, item.stamina)
                     itemInSlot.count--;
                     if (itemInSlot.count <= 0)
                     {
@@ -178,6 +165,7 @@ public class InventoryManager : MonoBehaviour
         inventoryItem.InitialiseItem(item);
     }
 
+    //Remove all Item when Player Die
 
     //Save 
     public ItemSO SaveDataItem(int i)

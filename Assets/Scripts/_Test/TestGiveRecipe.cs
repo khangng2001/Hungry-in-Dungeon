@@ -5,16 +5,15 @@ public class TestGiveRecipe : MonoBehaviour
 {
     [SerializeField] private List<RecipeSO> recipePapers;
 
-    public RecipeSO RandomRecipeSO()
+    public void AddRecipe()
     {
-        RecipeSO temp = new RecipeSO();
-        temp = recipePapers[0];
+        RecipeManager.instance.AddRecipe(recipePapers[0]);
         recipePapers.Remove(recipePapers[0]);
-        return temp;
-    }
+        GameManager.instance.SaveDataRecipe();
 
-    public RecipeSO GiveRecipeSO()
-    {
-        return RandomRecipeSO();
+        if (recipePapers.Count == 0)
+        {
+            //unactive this script
+        }
     }
 }
