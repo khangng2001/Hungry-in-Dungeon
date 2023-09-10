@@ -13,6 +13,7 @@ namespace Enemy.Boss
         private float oldX;
         private RangeDetectAttack rangeDetectAttack;
         private Intro intro;
+        private Ending ending;
         private float speed;
     
         [SerializeField] private float timeOfFireRain;
@@ -40,7 +41,8 @@ namespace Enemy.Boss
             Fly,
             Landing,
             Firebreath,
-            CallFireRain
+            CallFireRain,
+            Ending
         }
 
         [SerializeField] private States changeState;
@@ -78,6 +80,9 @@ namespace Enemy.Boss
                 case States.CallFireRain:
                     CallFireRain();
                     break;
+                case States.Ending:
+                    Ending();
+                    break;
                 default:
                     break;
             }
@@ -86,6 +91,7 @@ namespace Enemy.Boss
         private void Awake()
         {
             intro = GetComponent<Intro>();
+            ending = GetComponent<Ending>();
             enemyHandle = GetComponent<EnemyHandle>();
             animator = GetComponentInChildren<Animator>();
             spriteRender = GetComponentInChildren<SpriteRenderer>();
@@ -104,7 +110,7 @@ namespace Enemy.Boss
             isFlyDown = false;
             isFlyDownAfter = false;
             isTakeDamage = false;
-
+            isBeforeDestroy = false;
 
         }
 
@@ -155,7 +161,12 @@ namespace Enemy.Boss
                     else if (enemyHandle.GetCurrentHealth() <= 0f)
                     {
                         // CHET
-                        Destroy(gameObject);
+                        changeState = States.Ending;
+
+                        if (ending.GetIsFinish())
+                        {
+                            Destroy(gameObject);
+                        }
                         //
                     }
                 }
@@ -323,6 +334,40 @@ namespace Enemy.Boss
             yield return new WaitForSeconds(0.5f);
 
             isTakeDamage = false;
+        }
+
+        private void Ending()
+        {
+            ending.SetIsEnding(true);
+
+            //Destroy(gameObject);
+            if (!ending.GetIsSliding())
+            {
+                if (!isBeforeDestroy)
+                {
+                    isBeforeDestroy = true;
+
+                    animator.Play("Ending");
+
+                    StartCoroutine(BeforeDestroy());
+                }
+            }
+            else
+            {
+                animator.Play("Idle");
+            }
+        }
+
+        private bool isBeforeDestroy = false;
+        IEnumerator BeforeDestroy()
+        {
+            yield return new WaitForSeconds(3f);
+
+            // BIEN MAT THANH MAU BOSS
+            HUDOfBoss.SetActive(false);
+            //
+
+            ending.SetIsBacking(true);
         }
     }
 }
