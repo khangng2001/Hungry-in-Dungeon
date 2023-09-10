@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -62,5 +63,11 @@ public class GameManager : MonoBehaviour
                 RecipeManager.instance.AddRecipe(recipes[i]);
             }
         }
+    }
+
+    //CHANGE SCENE
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }
