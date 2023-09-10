@@ -1,3 +1,4 @@
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class ChangeToNewScene : MonoBehaviour
@@ -5,21 +6,26 @@ public class ChangeToNewScene : MonoBehaviour
     [Header("Scene's Name To Go")]
     [SerializeField] private string goToSceneName;
 
-    private Collider2D hit = null;
-    [SerializeField] private LayerMask playerMask;
-    [SerializeField] private float radiusCheck = 0;
-    private void CheckPlayer()
-    {
-        hit = Physics2D.OverlapCircle(transform.position, radiusCheck, playerMask);
-    }
+    private bool check;
 
     private void Update()
     {
-        CheckPlayer();
-        if (hit != null)
+        if (check)
         {
             //Player reaches the door
             GameManager.instance.ChangeScene(goToSceneName);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            check = true;
+        }
+        else
+        {
+            check = false;
         }
     }
 }
