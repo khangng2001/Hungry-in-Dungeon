@@ -34,21 +34,29 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     [SerializeField]private float moveSpeed = 5f;
     private Vector3 moveDir = Vector3.zero;
-
+    public static PlayerController instance;
     private void Awake()
     {
-        animator = GetComponentInChildren<Animator>();
-        input = GetComponent<PlayerInput>();
-        controller = GetComponent<PlayerController>();
-
-        SetHealth(maxHealth);
-        SetStamina(maxStamina);
-        SetStrength(strength);
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     void Start()
     {
-        
+        animator = GetComponentInChildren<Animator>();
+        input = GetComponent<PlayerInput>();
+        controller = GetComponent<PlayerController>();
+        SetHealth(maxHealth);
+        SetStamina(maxStamina);
+        SetStrength(strength);
     }
 
     void Update()
@@ -124,6 +132,10 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         {
             DecreaseHealth(collision.gameObject.GetComponentInParent<EnemyHandle>().GetStrength());
             BloodOut();
+        }
+        else if (collision.CompareTag("Portal"))
+        {
+            GameManager.instance.ChangeScene();
         }
     }
 

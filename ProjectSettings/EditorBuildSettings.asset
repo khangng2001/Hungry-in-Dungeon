@@ -26,7 +26,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Scene_02.unity
     guid: 702eaae91c73e9448829d8e86e59c03b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SingletonTest.unity
     guid: 43e7e17dd7b76ec418bd04f3e4370991
   m_configObjects: {}

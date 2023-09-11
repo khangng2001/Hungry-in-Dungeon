@@ -1,10 +1,12 @@
 using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ChangeToNewScene : MonoBehaviour
 {
+    [FormerlySerializedAs("goToSceneName")]
     [Header("Scene's Name To Go")]
-    [SerializeField] private string goToSceneName;
+    [SerializeField] private string sceneName;
 
     private bool check;
 
@@ -13,7 +15,7 @@ public class ChangeToNewScene : MonoBehaviour
         if (check)
         {
             //Player reaches the door
-            GameManager.instance.ChangeScene(goToSceneName);
+            GameManager.instance.ChangeScene();
         }
     }
 

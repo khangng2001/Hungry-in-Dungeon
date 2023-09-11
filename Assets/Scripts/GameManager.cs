@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -11,11 +13,10 @@ public class GameManager : MonoBehaviour
     public List<int> count;
     [Header("Recipe")]
     public List<RecipeSO> recipes;
+    [SerializeField] private int sceneIndex = 0;
+    [SerializeField] private Transform entrance;
+    
     private void Awake()
-    {
-        MakeSingleton();
-    }
-    void MakeSingleton()
     {
         if (instance != null)
         {
@@ -65,9 +66,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //CHANGE SCENE
-    public void ChangeScene(string sceneName)
+    private void OnEnable()
     {
-        SceneManager.LoadScene(sceneName);
+            Debug.Log("OnEnable called");
+            entrance = GameObject.FindWithTag("Entrance").GetComponent<Transform>().transform;
     }
+
+    //CHANGE SCENE
+    public void ChangeScene()
+    {
+        sceneIndex++;
+        SceneManager.LoadScene(sceneIndex);
+
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode)
+    {
+        if (entrance != null)
+        {
+            PlayerController.instance.transform.position = entrance.position;
+        }
+        else
+        {
+            Debug.Log("you die");
+        }
+    }
+
+   
 }

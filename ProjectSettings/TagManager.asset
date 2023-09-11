@@ -10,6 +10,8 @@ TagManager:
   - Hole
   - Trap
   - Leg
+  - Portal
+  - Entrance
   layers:
   - Default
   - TransparentFX
