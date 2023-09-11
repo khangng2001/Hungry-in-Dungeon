@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -11,11 +13,10 @@ public class GameManager : MonoBehaviour
     public List<int> count;
     [Header("Recipe")]
     public List<RecipeSO> recipes;
+    [SerializeField] private int sceneIndex = 0;
+    [SerializeField] private Vector3[] entrances;
+    [SerializeField] private int currentIndexEntrance = 0;
     private void Awake()
-    {
-        MakeSingleton();
-    }
-    void MakeSingleton()
     {
         if (instance != null)
         {
@@ -27,6 +28,17 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+
+    private void OnEnable()
+    {
+        currentIndexEntrance = 0;
+    }
+
+    private void OnDisable()
+    {
+        currentIndexEntrance = 0;
+    }
+
     public void SaveDataInventory()
     {
         for (int i = 0; i < item.Count; i++)
@@ -66,8 +78,20 @@ public class GameManager : MonoBehaviour
     }
 
     //CHANGE SCENE
-    public void ChangeScene(string sceneName)
+    public void ChangeScene()
     {
-        SceneManager.LoadScene(sceneName);
+        sceneIndex++;
+        SceneManager.LoadScene(sceneIndex);
+        PlayerController.instance.transform.position = entrances[currentIndexEntrance];
+        currentIndexEntrance++;
+        if (currentIndexEntrance > entrances.Length)
+        {
+            currentIndexEntrance = currentIndexEntrance;
+        }
     }
+    
+    
+   
+
+   
 }
