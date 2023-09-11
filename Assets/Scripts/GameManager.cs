@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IDataPersistence
 {
     public static GameManager instance;
     [Header("Inventory")]
@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public List<int> count;
     [Header("Recipe")]
     public List<RecipeSO> recipes;
-    [SerializeField] private int sceneIndex = 0;
+    [SerializeField] private int sceneIndex = 2;
     [SerializeField] private Vector3[] entrances;
     [SerializeField] private int currentIndexEntrance = 0;
     private void Awake()
@@ -89,9 +89,15 @@ public class GameManager : MonoBehaviour
             currentIndexEntrance = currentIndexEntrance;
         }
     }
-    
-    
-   
 
-   
+    //=================SAVE AND LOAD DATA================
+    public void LoadData(GameData data)
+    {
+        sceneIndex = data.Scene;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.Scene = sceneIndex;
+    }
 }

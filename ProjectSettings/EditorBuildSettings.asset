@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/UI's Tuan/Login.unity
     guid: 726f78b64438d704fa5180e08ecbb825
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/UI's Tuan/MainMenu.unity
     guid: 9f4a8f5a979eb574d984592a07e65329
   - enabled: 0

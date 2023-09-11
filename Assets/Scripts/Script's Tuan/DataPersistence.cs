@@ -24,18 +24,6 @@ public class DataPersistence : MonoBehaviour
     {
         try
         {
-            //User user = GameObject.FindObjectOfType<ConnectMongoDb>().GetComponent<ConnectMongoDb>().user;
-            //var mongoDbClient = user.GetMongoClient("mongodb-atlas");
-            //var database = mongoDbClient.GetDatabase("HungryInDungeon");
-            //collection = database.GetCollection<GameData>("Player");
-
-            //pid = await FindPlayerPid(user.Id);
-            //Debug.Log("pid: " + pid);
-            //this.dataHandler = new CloudDataHandler(collection);
-
-            //dataPersistencesObjects = FindAllDataPersistenceObjects();
-            //LoadGame();
-
             if (instance != null)
             {
                 Debug.LogError("Found more than one Data Persistence Manager in the scene. Destroying the newest one.");
@@ -111,6 +99,8 @@ public class DataPersistence : MonoBehaviour
     {
         GameData myAccount = await collection.FindOneAsync(new { pid = pid });
 
+        SceneManager.LoadScene(myAccount.Scene);
+
         // Load any saved data from a player in mongodb
         Debug.Log("pid error: " + myAccount.Pid);
         myAccount = await dataHandler.Load(myAccount.Pid);
@@ -135,16 +125,6 @@ public class DataPersistence : MonoBehaviour
         // Save that data to a player in mongodb  
         dataHandler.Save(myAccount, myAccount.Pid);
         Debug.Log("Save success");
-    }
-
-    private void OnApplicationQuit()
-    {
-        SaveGame();
-    }
-
-    private void OnApplicationPause(bool pause)
-    {
-        SaveGame();
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
