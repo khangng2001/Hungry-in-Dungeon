@@ -127,6 +127,18 @@ public class DataPersistence : MonoBehaviour
         Debug.Log("Save success");
     }
 
+    private void OnApplicationQuit()
+    {
+        Debug.Log("Save success!!");
+        SaveGame();
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        Debug.Log("Save success pause!!");
+        SaveGame();
+    }
+
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
