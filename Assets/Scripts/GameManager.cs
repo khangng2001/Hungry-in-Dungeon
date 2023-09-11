@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     [Header("Recipe")]
     public List<RecipeSO> recipes;
     [SerializeField] private int sceneIndex = 0;
-    [SerializeField] private Transform entrance;
-    
+    [SerializeField] private Vector3[] entrances;
+    [SerializeField] private int currentIndexEntrance = 0;
     private void Awake()
     {
         if (instance != null)
@@ -28,6 +28,17 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+
+    private void OnEnable()
+    {
+        currentIndexEntrance = 0;
+    }
+
+    private void OnDisable()
+    {
+        currentIndexEntrance = 0;
+    }
+
     public void SaveDataInventory()
     {
         for (int i = 0; i < item.Count; i++)
@@ -66,31 +77,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-            Debug.Log("OnEnable called");
-            entrance = GameObject.FindWithTag("Entrance").GetComponent<Transform>().transform;
-    }
-
     //CHANGE SCENE
     public void ChangeScene()
     {
         sceneIndex++;
         SceneManager.LoadScene(sceneIndex);
-
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode)
-    {
-        if (entrance != null)
+        PlayerController.instance.transform.position = entrances[currentIndexEntrance];
+        currentIndexEntrance++;
+        if (currentIndexEntrance > entrances.Length)
         {
-            PlayerController.instance.transform.position = entrance.position;
-        }
-        else
-        {
-            Debug.Log("you die");
+            currentIndexEntrance = currentIndexEntrance;
         }
     }
+    
+    
+   
 
    
 }

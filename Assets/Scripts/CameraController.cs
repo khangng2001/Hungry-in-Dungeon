@@ -15,6 +15,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         target = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        if(target == null) return;
     }
 
     private void LateUpdate()

@@ -1451,3 +1451,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: []
   count: 
+  recipes: []
+  sceneIndex: 0
+  entrances:
+  - {x: -10.75, y: 3.84, z: 0}
+  - {x: -16.68, y: 21.24, z: 0}
+  - {x: -24.86, y: 26.28, z: 0}
+  currentIndexEntrance: 0
