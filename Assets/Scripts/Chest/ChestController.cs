@@ -18,6 +18,8 @@ public class ChestController : MonoBehaviour
 
     [SerializeField] private GameObject key;
 
+    [SerializeField] private GameObject player;
+
     private void Awake()
     {
         rangeOpen = GetComponentInChildren<RangeOpen>();
@@ -36,6 +38,8 @@ public class ChestController : MonoBehaviour
     {
         if (rangeOpen.GetIsIn())
         {
+            player = rangeOpen.GetPlayer();
+
             if (!PRESS_E)
             {
                 textEBefore.SetActive(true);
@@ -61,8 +65,10 @@ public class ChestController : MonoBehaviour
                 PRESS_E_LAST = true;
                 textEAfter.SetActive(false);
 
-                // HADLE KEY
+                // HANDLE KEY
                 key.SetActive(false);
+
+                player.transform.GetChild(3).gameObject.SetActive(true);
                 //
             }
         }

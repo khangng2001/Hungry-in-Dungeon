@@ -401,6 +401,7 @@ MonoBehaviour:
   textEBefore: {fileID: 7661463015204267619}
   textEAfter: {fileID: 563604201}
   key: {fileID: 218594282}
+  player: {fileID: 0}
 --- !u!50 &54115049
 Rigidbody2D:
   serializedVersion: 4
@@ -590,3 +591,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isIn: 0
+  player: {fileID: 0}
