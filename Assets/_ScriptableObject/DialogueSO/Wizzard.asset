@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wizzard
   m_EditorClassIdentifier: 
   name: Wizzard
+  face: {fileID: 21300000, guid: 525a99f96974d3241a4f935f56776d75, type: 3}
   sentences:
   - Congratolation! You killed Dwarf
   - 'You are our hero '
