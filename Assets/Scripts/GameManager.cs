@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     [SerializeField] private int sceneIndex = 2;
     [SerializeField] private Vector3[] entrances;
     [SerializeField] private int currentIndexEntrance = 0;
+
     private void Awake()
     {
         if (instance != null)

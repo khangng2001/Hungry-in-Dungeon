@@ -100,7 +100,8 @@ public class InventoryManager : MonoBehaviour
                 ItemSO item = itemInSlot.item;
                 if (use == true)
                 {
-                    //HAm player.instance.add(item.health, item.stamina)
+                    PlayerController.instance.IncreaseHealth(item.health);
+                    PlayerController.instance.IncreaseStamina(item.stamina);
                     itemInSlot.count--;
                     if (itemInSlot.count <= 0)
                     {
