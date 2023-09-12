@@ -6,6 +6,9 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour, IDataPersistence
 {
+    //Coin Paper
+    private int coinPaper;
+
     // HEALTH PLAYER
     [SerializeField] private float maxHealth = 0f;
     private float currentHealth = 0f;
@@ -138,6 +141,32 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             GameManager.instance.ChangeScene();
         }
     }
+
+    // ================= HANDLE COINPAPER ======================
+    public int GetCointPaper()
+    {
+        return coinPaper;
+    }
+
+    public void IncreaseCoinPaper()
+    {
+        coinPaper++;
+        LoadCoinPaper();
+    }
+
+    public void DecreaseCoinPaper()
+    {
+        coinPaper--;
+        LoadCoinPaper();
+    }
+
+    private void LoadCoinPaper()
+    {
+        //update UI
+        Debug.Log(coinPaper);
+    }
+
+    // ==========================================
 
     // ================= HANDLE HEALTH ======================
     public void SetHealth(float newHealth)
@@ -297,17 +326,25 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     // ======================= SAVE AND LOAD DATA =========================
     public void LoadData(GameData data)
     {
+        //player's position
         transform.position = new Vector3(data.Position.X, data.Position.Y, data.Position.Z);
+
+        //Coin Paper
+        coinPaper = data.CoinPaper;
     }
 
     public void SaveData(ref GameData data)
     {
+        //player's position
         data.Position = new Position
         {
             X = transform.position.x,
             Y = transform.position.y,
             Z = transform.position.z
         };
+
+        //Coin Paper
+        data.CoinPaper = coinPaper;
     }
     // ===========================================
 }

@@ -11,7 +11,14 @@ public class TestGiveRecipe : MonoBehaviour
         {
             AddRecipe();
         } else if (RecipeManager.instance.listOfPaperUI.Count > 0) {
-            //check coinPaper
+            if (PlayerController.instance.GetCointPaper() > 0)
+            {
+                AddRecipe();
+                PlayerController.instance.DecreaseCoinPaper();
+            } else
+            {
+                Debug.Log("You dont have enough coinPaper");
+            }
         }
     }
     private void AddRecipe()
@@ -20,7 +27,6 @@ public class TestGiveRecipe : MonoBehaviour
         {
             RecipeManager.instance.AddRecipe(recipePapers[0]);
             recipePapers[0] = null;
-            //recipePapers.Remove(recipePapers[0]);
             GameManager.instance.SaveDataRecipe(recipePapers[0]);
         }
     }

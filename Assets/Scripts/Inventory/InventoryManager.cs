@@ -152,7 +152,7 @@ public class InventoryManager : MonoBehaviour
             ItemObject itemO = itemPrefab[i].GetComponent<ItemObject>();
             if (itemO.GetItem() == item.item)
             {
-                Instantiate(itemPrefab[i], player.transform.position, Quaternion.identity);
+                Instantiate(itemPrefab[i], PlayerController.instance.gameObject.transform.position, Quaternion.identity);
             }
         }
     }
