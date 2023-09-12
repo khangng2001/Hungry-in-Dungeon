@@ -17,7 +17,7 @@ public class PaperObject : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("Receive 1 paper");   //player.instance.addPaper()
+                PlayerController.instance.IncreaseCoinPaper();
                 Destroy(this.gameObject);
             }
         }
