@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: c31cb8302d9f15f4289859fd5e40e2df
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/UI's Tuan/CutScene.unity
     guid: f9aec425e554a5341893c68aa4376d49
   - enabled: 1
