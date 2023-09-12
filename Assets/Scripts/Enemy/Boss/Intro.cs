@@ -15,6 +15,7 @@ public class Intro : MonoBehaviour
     private void Awake()
     {
         rangeDetect = transform.parent.gameObject.GetComponentInChildren<RangeDetect>();
+        camera = Camera.main.gameObject;
 
         isSlinding = true;
         isBacking = false;

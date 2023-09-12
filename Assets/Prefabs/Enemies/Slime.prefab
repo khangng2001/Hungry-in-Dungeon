@@ -279,7 +279,7 @@ MonoBehaviour:
   - {x: 0.0076389313, y: -0.61126614, z: -0.000000044703484}
   m_ShapePathHash: 481003973
   m_Mesh: {fileID: 0}
-  m_InstanceId: -22014
+  m_InstanceId: -3584
   m_LocalBounds:
     m_Center: {x: 0.041205406, y: -0.30001545, z: 0}
     m_Extent: {x: 0.5401106, y: 0.3112507, z: 0}
@@ -388,7 +388,7 @@ MonoBehaviour:
   kilometerToOldPosition: 0
   player: {fileID: 0}
   rangeDetect: {fileID: 0}
-  rangeHurtObject: {fileID: 7659613456339461162}
+  rangeHurtObject: {fileID: 0}
   canReborn: 0
   changeState: 0
 --- !u!195 &7659613456466164011

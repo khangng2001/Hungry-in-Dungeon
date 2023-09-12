@@ -17,6 +17,7 @@ public class Ending : MonoBehaviour
     private void Awake()
     {
         rangeDetect = transform.parent.gameObject.GetComponentInChildren<RangeDetect>();
+        camera = Camera.main.gameObject;
         isEnding = false;
 
         isSlinding = true;

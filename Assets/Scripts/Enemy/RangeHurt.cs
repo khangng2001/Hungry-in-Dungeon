@@ -36,6 +36,12 @@ public class RangeHurt : MonoBehaviour
         return isHurt;
     }
 
+    public void SetIsHurt(bool enable)
+    {
+        isHurt = enable;
+        wait = false;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Sword")

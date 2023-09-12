@@ -33,6 +33,7 @@ public class EnemyController : MonoBehaviour
 
     // IF CAN REBORN, LET'S TICK IT
     public bool canReborn = false;
+    private bool selectCanReborn = false;
 
     // =============== STATE VARIABLES ========================
     public enum State
@@ -45,7 +46,8 @@ public class EnemyController : MonoBehaviour
         Attack,
         Hurt,
         Die,
-        Reborn
+        Reborn,
+        Again
     }
     private State currentState = State.Non;
     public State changeState;
@@ -77,9 +79,18 @@ public class EnemyController : MonoBehaviour
                     enemyHandle.TakeDamge(player.GetComponent<PlayerController>().GetStrength());
                     break;
                 case State.Die:
-
+                    // SET UP CAC THONG SO NHU BAN DAU
+                    isBeforeReborn = false;
+                    isDisappear = false;
+                    isWaitToComeBack = false;
+                    rangeHurtObject.SetActive(true);
+                    rangeHurt.SetIsHurt(false);
+                    canReborn = selectCanReborn;
                     break;
                 case State.Reborn:
+
+                    break;
+                case State.Again:
 
                     break;
             }
@@ -113,6 +124,9 @@ public class EnemyController : MonoBehaviour
             case State.Reborn:
                 Reborn();
                 break;
+            case State.Again:
+
+                break;
         }
     }
     // ======================================================
@@ -124,6 +138,8 @@ public class EnemyController : MonoBehaviour
         rangeAttack = GetComponentInChildren<RangeAttack>();
 
         rangeHurt = GetComponentInChildren<RangeHurt>();
+
+        rangeHurtObject = transform.GetChild(2).gameObject;
 
         rangeDetect = transform.parent.gameObject.GetComponentInChildren<RangeDetect>();
 
@@ -148,6 +164,9 @@ public class EnemyController : MonoBehaviour
 
         // Get First position.x;
         oldX = transform.position.x;
+
+        // SAVE OPTION canReborn
+        selectCanReborn = canReborn;
     }
 
     private void Update()
@@ -284,33 +303,6 @@ public class EnemyController : MonoBehaviour
         animator.Play("Hurt");
     }
 
-    private void Die()
-    {
-        agent.SetDestination(transform.position);
-
-
-        if (!isDisappear)
-        {
-            animator.Play("Die");
-            rangeHurtObject.SetActive(false);
-
-            isDisappear = true;
-            StartCoroutine(Disappear());
-        }
-    }
-
-    private bool isDisappear = false;
-    IEnumerator Disappear()
-    {
-        yield return new WaitForSeconds(1f);
-
-        // Roi vat pham 
-
-        //
-
-        Destroy(gameObject);
-    }
-
     private void Reborn()
     {
         agent.SetDestination(transform.position);
@@ -337,10 +329,61 @@ public class EnemyController : MonoBehaviour
     IEnumerator AfterReborn()
     {
         yield return new WaitForSeconds(1f);
-        enemyHandle.SetMaxHealth(30f);
+        enemyHandle.SetCurrentHealth(enemyHandle.GetMaxHealth());
         canReborn = false;
         rangeHurtObject.SetActive(true);
     }
 
-    
+    private void Die()
+    {
+        agent.SetDestination(transform.position);
+
+
+        if (!isDisappear)
+        {
+            animator.Play("Die");
+            rangeHurtObject.SetActive(false);
+
+            isDisappear = true;
+            StartCoroutine(Disappear());
+        }
+    }
+
+    private bool isDisappear = false;
+    IEnumerator Disappear()
+    {
+        yield return new WaitForSeconds(1f);
+
+        // Roi vat pham 
+
+        //
+
+        //Destroy(gameObject);
+
+        if (!isWaitToComeBack)
+        {
+            isWaitToComeBack = true;
+
+            //gameObject.SetActive(false);
+            spriteRenderer.enabled = false;
+
+            StartCoroutine(WaitToComeBack());
+        }
+    }
+
+    private bool isWaitToComeBack = false;
+    IEnumerator WaitToComeBack()
+    {
+        // THOI GIAN QUAI VAT TU RESET
+        yield return new WaitForSeconds(30f);
+        //
+
+        // SET UP VE VI TRI CU~
+        transform.position = oldPosition;
+
+        // SET UP MAU VA ACTIVE
+        enemyHandle.SetCurrentHealth(enemyHandle.GetMaxHealth());
+        //gameObject.SetActive(true);
+        spriteRenderer.enabled = true;
+    }
 }
