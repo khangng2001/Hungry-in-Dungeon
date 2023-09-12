@@ -16,7 +16,7 @@ public class SwordController : MonoBehaviour
     private Animator ani;
 
     private int numClick = 0;
-
+    [SerializeField] private AudioClip swordEffectSound;
     private void Awake()
     {
         ani = GetComponent<Animator>();
@@ -45,8 +45,8 @@ public class SwordController : MonoBehaviour
 
     void Attack_1()
     {
+        AudioManager.Instance.PlaySoundEffect(swordEffectSound);
         ani.Play("Attack_1");
-
         player.GetComponent<PlayerController>().DecreaseStamina(staminaAttack1);
     }
 

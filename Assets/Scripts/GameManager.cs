@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
             DontDestroyOnLoad(gameObject);
         }
     }
-
+    
     private void OnEnable()
     {
         currentIndexEntrance = 0;
@@ -39,6 +39,18 @@ public class GameManager : MonoBehaviour, IDataPersistence
         currentIndexEntrance = 0;
     }
 
+    private void Start()
+    {
+        PlayBackgroundMusic();
+    }
+
+    private void PlayBackgroundMusic()
+    {
+        if (currentIndexEntrance == 0)
+        {
+            AudioManager.Instance.PlayBackgroundMusic();
+        }
+    }
     public void SaveDataInventory()
     {
         for (int i = 0; i < item.Count; i++)
