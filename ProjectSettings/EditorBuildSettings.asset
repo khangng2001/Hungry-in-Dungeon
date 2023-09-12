@@ -15,9 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Crafting.unity
     guid: 62576f4ef47be864f8487674fafc3ff3
   - enabled: 0
+<<<<<<< Updated upstream
     path: Assets/Scenes/UI's Tuan/SampleScene 1.unity
     guid: fc7eb25542e4c3b469ff00b59bc0c58e
   - enabled: 0
+=======
+>>>>>>> Stashed changes
     path: Assets/Scenes/Main Menu.unity
     guid: c31cb8302d9f15f4289859fd5e40e2df
   - enabled: 1

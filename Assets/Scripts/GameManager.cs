@@ -32,23 +32,31 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         currentIndexEntrance = 0;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable()
     {
         currentIndexEntrance = 0;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    private void Start()
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("OnSceneLoaded: " + scene.name);
         PlayBackgroundMusic();
     }
-
+    
+    
     private void PlayBackgroundMusic()
     {
         if (currentIndexEntrance == 0)
         {
             AudioManager.Instance.PlayBackgroundMusic();
+        }
+        else
+        {
+            AudioManager.Instance.PauseBackgroundMusic();
         }
     }
     public void SaveDataInventory()

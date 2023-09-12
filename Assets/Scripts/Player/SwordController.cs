@@ -53,7 +53,6 @@ public class SwordController : MonoBehaviour
     void Attack_2()
     {
         ani.Play("Attack_2");
-
         player.GetComponent<PlayerController>().DecreaseStamina(staminaAttack2);
     }
 
