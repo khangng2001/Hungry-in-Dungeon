@@ -6745,7 +6745,7 @@ PrefabInstance:
       objectReference: {fileID: 1087349569932973434}
     - target: {fileID: 1200260675180561565, guid: 22342aac1ae281443bf627aa8c560ccd, type: 3}
       propertyPath: sceneIndex
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5742546657408915102, guid: 22342aac1ae281443bf627aa8c560ccd, type: 3}
       propertyPath: m_Name

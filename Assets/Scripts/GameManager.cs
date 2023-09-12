@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public List<int> count;
     [Header("Recipe")]
     public List<RecipeSO> recipes;
-    [SerializeField] private int sceneIndex = 3;
+    [SerializeField] private int sceneIndex = 2;
     [SerializeField] private Vector3[] entrances;
     [SerializeField] private int currentIndexEntrance = 0;
 

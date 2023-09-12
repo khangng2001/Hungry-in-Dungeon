@@ -65,13 +65,13 @@ public class DataPersistence : MonoBehaviour
         this.dataHandler = new CloudDataHandler(collection);
 
         dataPersistencesObjects = FindAllDataPersistenceObjects();
-        //LoadGame();
+        SaveGame();
     }
 
     public void OnSceneUnLoaded(Scene scene)
     {
-        Debug.Log("OnSceneUnLoaded Called");
-        SaveGame();
+        Debug.Log("OnSceneUnLoaded Called: " + scene.name);
+        
     }
 
     private async Task<string> FindPlayerPid(string findPid)
@@ -104,7 +104,7 @@ public class DataPersistence : MonoBehaviour
         // Load any saved data from a player in mongodb
         Debug.Log("pid error: " + myAccount.Pid);
         myAccount = await dataHandler.Load(myAccount.Pid);
-        
+
         // Push the load data to all other script that need it
         foreach (IDataPersistence dataPersistenceObj in dataPersistencesObjects)
         {
@@ -125,18 +125,6 @@ public class DataPersistence : MonoBehaviour
         // Save that data to a player in mongodb  
         dataHandler.Save(myAccount, myAccount.Pid);
         Debug.Log("Save success");
-    }
-
-    private void OnApplicationQuit()
-    {
-        Debug.Log("Save success!!");
-        SaveGame();
-    }
-
-    private void OnApplicationPause(bool pause)
-    {
-        Debug.Log("Save success pause!!");
-        SaveGame();
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
