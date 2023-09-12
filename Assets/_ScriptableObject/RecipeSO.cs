@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -13,6 +11,7 @@ public class RecipeSO : ScriptableObject
     public string Title { get; set; }
 
     [field: SerializeField]
+    [field: TextArea]
     public string Benefit { get; set; }
 
     [field: SerializeField]

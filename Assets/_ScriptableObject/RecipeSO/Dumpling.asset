@@ -15,4 +15,6 @@ MonoBehaviour:
   <RecipeImage>k__BackingField: {fileID: 21300000, guid: b96ccc76068ac9f45b4bbfbd65f2ef70, type: 3}
   <Title>k__BackingField: Dumpling
   <Benefit>k__BackingField: Gain 5 Health
-  <Ingredient>k__BackingField: Egg
+  <Ingredient>k__BackingField: 'Ingredient
+
+    Egg x1'
