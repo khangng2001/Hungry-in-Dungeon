@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class RecipePaperUI : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private Image recipePaperImage;
-    [SerializeField] private GameObject unselected;
+    [SerializeField] private GameObject selected;
 
     public RecipeSO recipeSO;
 
@@ -25,11 +25,11 @@ public class RecipePaperUI : MonoBehaviour, IPointerClickHandler
 
     public void Select()
     {
-        unselected.SetActive(false);
+        selected.SetActive(true);
     }
 
     public void Deselect()
     {
-        unselected.SetActive(true);
+        selected.SetActive(false);
     }
 }
