@@ -9,6 +9,8 @@ public class PlayerInput : MonoBehaviour
 
     public Vector2 inputMosue;
 
+    public bool inputInteract;
+
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
