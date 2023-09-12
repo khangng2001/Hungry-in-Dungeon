@@ -254,14 +254,11 @@ namespace Enemy.Boss
         {
             // KICH HOAT DONG CUA
 
-            //
-
-        
-
             if (!intro.GetIsSliding())
             {
                 if (!isFlyDown)
                 {
+                    AudioManager.Instance.PlayFightMusic();
                     isFlyDown = true;
 
                     StartCoroutine(FlyDown());
