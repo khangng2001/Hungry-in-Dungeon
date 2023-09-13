@@ -279,7 +279,7 @@ MonoBehaviour:
   - {x: 0.0076389313, y: -0.61126614, z: -0.000000044703484}
   m_ShapePathHash: 481003973
   m_Mesh: {fileID: 0}
-  m_InstanceId: -3584
+  m_InstanceId: -125680
   m_LocalBounds:
     m_Center: {x: 0.041205406, y: -0.30001545, z: 0}
     m_Extent: {x: 0.5401106, y: 0.3112507, z: 0}
@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 7659613456466164009}
   - component: {fileID: 7659613456466164008}
   - component: {fileID: 7659613456466164011}
+  - component: {fileID: 2003731141}
   m_Layer: 10
   m_Name: Slime
   m_TagString: Untagged
@@ -368,8 +369,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fab608663ac1f44a87d4f738fe3209e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strengthEnemy: 10
-  speedEnemy: 1.5
+  strengthEnemy: 20
+  speedEnemy: 2
   healththEnemy: 30
   currentHealth: 0
 --- !u!114 &7659613456466164008
@@ -389,6 +390,7 @@ MonoBehaviour:
   player: {fileID: 0}
   rangeDetect: {fileID: 0}
   rangeHurtObject: {fileID: 0}
+  itemDrop: {fileID: 0}
   canReborn: 0
   changeState: 0
 --- !u!195 &7659613456466164011
@@ -413,6 +415,22 @@ NavMeshAgent:
   m_BaseOffset: 0.65
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2003731141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7659613456466164000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a19b94df309c86042ba18cc60bd506a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemList:
+  - {fileID: 4179150854586636519, guid: ed70aea0becc53f43b78ee5916287c2c, type: 3}
+  - {fileID: 4179150854586636519, guid: ed70aea0becc53f43b78ee5916287c2c, type: 3}
+  spawnChance: 0.5
 --- !u!1 &7659613456944843576
 GameObject:
   m_ObjectHideFlags: 0

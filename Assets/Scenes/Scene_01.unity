@@ -6827,10 +6827,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2135753547, guid: ccc7e0b7ef3dd31448a7f3fcc9b613a4, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 91c522434cb184c41a92cafbf7885d43, type: 3}
     - target: {fileID: 7548341229818043912, guid: ccc7e0b7ef3dd31448a7f3fcc9b613a4, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7548341230566593108, guid: ccc7e0b7ef3dd31448a7f3fcc9b613a4, type: 3}
+      propertyPath: swordEffectSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 91c522434cb184c41a92cafbf7885d43, type: 3}
+    - target: {fileID: 7548341230566593108, guid: ccc7e0b7ef3dd31448a7f3fcc9b613a4, type: 3}
+      propertyPath: swordStabEffectSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 60f4d0568bc6ce54b82339fec93187db, type: 3}
     - target: {fileID: 7548341230766466112, guid: ccc7e0b7ef3dd31448a7f3fcc9b613a4, type: 3}
       propertyPath: fadeDie
       value: 
@@ -6861,11 +6873,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548341230766466115, guid: ccc7e0b7ef3dd31448a7f3fcc9b613a4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -6.26
       objectReference: {fileID: 0}
     - target: {fileID: 7548341230766466115, guid: ccc7e0b7ef3dd31448a7f3fcc9b613a4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -12.69
       objectReference: {fileID: 0}
     - target: {fileID: 7548341230766466115, guid: ccc7e0b7ef3dd31448a7f3fcc9b613a4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6903,7 +6915,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7770536929113048143, guid: ccc7e0b7ef3dd31448a7f3fcc9b613a4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7770536929113048143, guid: ccc7e0b7ef3dd31448a7f3fcc9b613a4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7770536929113048143, guid: ccc7e0b7ef3dd31448a7f3fcc9b613a4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7770536929113048143, guid: ccc7e0b7ef3dd31448a7f3fcc9b613a4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7770536929113048143, guid: ccc7e0b7ef3dd31448a7f3fcc9b613a4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2135753547, guid: ccc7e0b7ef3dd31448a7f3fcc9b613a4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ccc7e0b7ef3dd31448a7f3fcc9b613a4, type: 3}
 --- !u!114 &1087349569932973434 stripped
 MonoBehaviour:
@@ -6926,7 +6959,7 @@ PrefabInstance:
     - target: {fileID: 5463604973366864448, guid: 11bd173e4642a1845be837f7a250ef5e, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 8b8d82e2fe0929145bc904eb6d30d49e, type: 3}
+      objectReference: {fileID: 8300000, guid: b662992a5377d754d9a90e0088db8eb3, type: 3}
     - target: {fileID: 5463604973366864448, guid: 11bd173e4642a1845be837f7a250ef5e, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -6990,10 +7023,10 @@ PrefabInstance:
     - target: {fileID: 8610014969965567803, guid: 11bd173e4642a1845be837f7a250ef5e, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 94d188321bb7cff4cb6423422480b920, type: 3}
+      objectReference: {fileID: 8300000, guid: 457b9b8a8483ce64eab1f97aea2805ec, type: 3}
     - target: {fileID: 8610014970486370329, guid: 11bd173e4642a1845be837f7a250ef5e, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: d55b2e2e705a1934d9bbade19dca4834, type: 3}
+      objectReference: {fileID: 8300000, guid: 76a40d84ce7b1c94bbbe36f1bc28e86b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11bd173e4642a1845be837f7a250ef5e, type: 3}

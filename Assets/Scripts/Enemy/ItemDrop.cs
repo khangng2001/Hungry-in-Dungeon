@@ -8,7 +8,7 @@ namespace Enemy
     {
 
         [SerializeField] private GameObject[] itemList;
-        private float spawnChance = 0.2f;
+        [SerializeField] private float spawnChance = 0.5f;
         void Start()
         {
         

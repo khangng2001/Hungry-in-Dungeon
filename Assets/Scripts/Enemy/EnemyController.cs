@@ -1,3 +1,4 @@
+using Enemy;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +31,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private RangeDetect rangeDetect;
 
     [SerializeField] private GameObject rangeHurtObject;
+
+    [SerializeField] private ItemDrop itemDrop;
 
     // IF CAN REBORN, LET'S TICK IT
     public bool canReborn = false;
@@ -146,6 +149,9 @@ public class EnemyController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
 
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        itemDrop = GetComponent<ItemDrop>();
+
     }
 
     private void Start()
@@ -355,7 +361,7 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // Roi vat pham 
-
+        itemDrop.DropItem();
         //
 
         //Destroy(gameObject);

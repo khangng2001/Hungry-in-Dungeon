@@ -27,6 +27,7 @@ namespace Enemy.Boss
         [SerializeField] private GameObject HUDOfBoss;
         [SerializeField] private GameObject healthBar;
         [SerializeField] private TextMeshProUGUI textHealthBar;
+        [SerializeField] private AudioClip roarSoundEffect;
 
 
         private enum States
@@ -254,13 +255,14 @@ namespace Enemy.Boss
         {
             // KICH HOAT DONG CUA
 
+            //AudioManager.Instance.PlaySoundEffect(roarSoundEffect);
+
             if (!intro.GetIsSliding())
             {
                 if (!isFlyDown)
                 {
                     AudioManager.Instance.PlayFightMusic();
                     isFlyDown = true;
-
                     StartCoroutine(FlyDown());
                 }
             }
