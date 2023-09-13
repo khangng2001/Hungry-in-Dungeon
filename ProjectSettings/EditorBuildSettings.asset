@@ -5,22 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/UI's Tuan/Login.unity
-    guid: 726f78b64438d704fa5180e08ecbb825
-  - enabled: 0
-    path: Assets/Scenes/UI's Tuan/MainMenu.unity
-    guid: 9f4a8f5a979eb574d984592a07e65329
-  - enabled: 0
-    path: Assets/Scenes/Crafting.unity
-    guid: 62576f4ef47be864f8487674fafc3ff3
-  - enabled: 0
-<<<<<<< Updated upstream
-    path: Assets/Scenes/UI's Tuan/SampleScene 1.unity
-    guid: fc7eb25542e4c3b469ff00b59bc0c58e
-  - enabled: 0
-=======
->>>>>>> Stashed changes
+  - enabled: 1
+    path: Assets/Scenes/Login.unity
+    guid: 0d8169a4ad8ce11489d94ffb4fa438dc
+  - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: c31cb8302d9f15f4289859fd5e40e2df
   - enabled: 1
@@ -29,16 +17,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene_02.unity
     guid: 702eaae91c73e9448829d8e86e59c03b
-  - enabled: 1
-    path: Assets/Scenes/Scene_03.unity
-    guid: 261c107fde4c28945917bc38e63b7cfa
-  - enabled: 1
-    path: Assets/Scenes/Scene_04.unity
-    guid: 4f57d9a9e8e51594d88d0498d25524cd
-<<<<<<< Updated upstream
-  - enabled: 0
-    path: Assets/Scenes/SingletonTest.unity
-    guid: 43e7e17dd7b76ec418bd04f3e4370991
-=======
->>>>>>> Stashed changes
   m_configObjects: {}

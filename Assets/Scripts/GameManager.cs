@@ -15,11 +15,23 @@ public class GameManager : MonoBehaviour
     public List<RecipeSO> recipes;
     
     private static int sceneIndex = 2;
-    [SerializeField] private Vector3[] entrances;
+    [SerializeField] public Vector3[] entrances;
     [SerializeField] private int currentIndexEntrance = 0;
-
-    [SerializeField] private GameObject blackCurtain;
     
+    [SerializeField] private GameObject blackFade;
+
+    public int CurrentIndexEntrance
+    {
+        get
+        {
+            return currentIndexEntrance;
+        }
+        private set
+        {
+            
+        }
+    }
+
     private void Awake()
     {
         if (instance != null)
@@ -122,12 +134,13 @@ public class GameManager : MonoBehaviour
     {
         sceneIndex++;
         currentIndexEntrance++;
-        blackCurtain.SetActive(true);
+        
+        blackFade.GetComponent<Animator>().Play("FadeOut");
+        yield return new WaitForSeconds(1f);
         PlayerController.instance.transform.position = entrances[currentIndexEntrance];
-        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(sceneIndex);
-        yield return new WaitForSeconds(1f);
-        blackCurtain.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        blackFade.GetComponent<Animator>().Play("FadeIn");
         
     }
 
@@ -135,12 +148,12 @@ public class GameManager : MonoBehaviour
     {
         currentIndexEntrance--;
         sceneIndex--;
-        blackCurtain.SetActive(true);
+        blackFade.GetComponent<Animator>().Play("FadeOut");
+        yield return new WaitForSeconds(1f);
         PlayerController.instance.transform.position = entrances[currentIndexEntrance];
-        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(sceneIndex);
-        yield return new WaitForSeconds(1f);
-        blackCurtain.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        blackFade.GetComponent<Animator>().Play("FadeIn");
         
     }
     

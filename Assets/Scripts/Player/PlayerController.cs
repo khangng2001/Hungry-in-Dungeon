@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour, IDataPersistence
 {
@@ -10,8 +11,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     private int coinPaper;
 
     // FADE BLACK
-    [SerializeField] private GameObject FadeBlack;
-
+     [SerializeField] private GameObject fadeDie;
     // HEALTH PLAYER
     [SerializeField] private float maxHealth = 0f;
     private float currentHealth = 0f;
@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
                 // KHONG THE DI CHUYEN NUA
                 canMove = false;
 
-                FadeBlack.GetComponent<Animator>().Play("FadeOut");
+                fadeDie.GetComponent<Animator>().Play("FadeOut");
 
                 StartCoroutine(AfterFadeOut());
             }
@@ -113,16 +113,17 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(2f);
 
         ResetPlayer();
-        FadeBlack.GetComponent<Animator>().Play("FadeIn");
+        fadeDie.GetComponent<Animator>().Play("FadeIn");
 
     }
 
     private void ResetPlayer()
     {
         // SET UP LAI VI TRI SAU KHI PLAY AGAIN
-        transform.position = new Vector3(10.91f, -8.92f, 0f); // TUAN SE SET VI TRI NAY
+        transform.position = GameManager.instance.entrances[GameManager.instance.CurrentIndexEntrance]; // TUAN SE SET VI TRI NAY
         //DataPersistence.instance.LoadGame();
         //SceneManager.LoadScene(2);
+        
 
         // SET UP LAI THONG SO
         SetHealth(maxHealth);
