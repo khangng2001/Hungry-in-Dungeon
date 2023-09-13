@@ -70,6 +70,11 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     void Update()
     {
+        if (DialogueManager.instance.isDialoguePlaying)
+        {
+            return;
+        }
+
         LifeController();
 
         if (canMove)

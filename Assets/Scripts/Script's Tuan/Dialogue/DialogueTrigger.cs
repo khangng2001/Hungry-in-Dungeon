@@ -8,8 +8,6 @@ public class DialogueTrigger : MonoBehaviour
 
     [SerializeField] private DialogueSO dialogue;
 
-    [SerializeField] private ItemSO item;
-
     private bool playerInRange;
 
     private void Awake()
@@ -25,7 +23,7 @@ public class DialogueTrigger : MonoBehaviour
             cue.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E) && !DialogueManager.instance.isDialoguePlaying)
             {
-                DialogueManager.instance.EnterDialogueMode(dialogue, item);
+                DialogueManager.instance.EnterDialogueMode(dialogue);
             }
         }
         else

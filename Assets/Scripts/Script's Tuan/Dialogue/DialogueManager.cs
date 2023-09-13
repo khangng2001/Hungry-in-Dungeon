@@ -27,12 +27,17 @@ public class DialogueManager : MonoBehaviour
 
     public bool isDialoguePlaying { get; private set; }
 
-    private ItemSO item;
-
     public static DialogueManager instance { get; private set; }
     private void Awake()
     {
+        if (instance != null)
+        {
+            Debug.LogError("Found a instance in scene. Remove this object");
+            Destroy(this.gameObject);
+            return;
+        }
         instance = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
@@ -71,11 +76,10 @@ public class DialogueManager : MonoBehaviour
         //}
     }
 
-    public void EnterDialogueMode(DialogueSO dialogue, ItemSO itemNPC)
+    public void EnterDialogueMode(DialogueSO dialogue)
     {
         isDialoguePlaying = true;
         dialoguePanel.SetActive(true);
-        item = itemNPC;
         sentences = dialogue.sentences;
         dialogueName.text = dialogue.name;
         face.sprite = dialogue.face;
@@ -98,8 +102,10 @@ public class DialogueManager : MonoBehaviour
     {
         isDialoguePlaying = false;
         dialoguePanel.SetActive(false);
+        choise.SetActive(false);
         dialogueText.text = "";
         index = 0;
+        wordSpeed = 0.1f;
     }
 
     private void ContinueStory()
@@ -130,11 +136,8 @@ public class DialogueManager : MonoBehaviour
         ExitDialogueMode();
     }
 
-    private void GiveItem()
+    public void OnOKButton()
     {
-        if (item != null)
-        {
-            InventoryManager.instance.AddItem(item);
-        }
+        notification.SetActive(false);
     }
 }
