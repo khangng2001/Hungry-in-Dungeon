@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             animator.Play("Die");
             playerInput.enabled = false;
             //playerController.enabled = false;
-            transform.GetChild(1).gameObject.SetActive(false); // LIGHT2D (Tat den cua Ngo Tat To)
+            transform.GetChild(1).gameObject.SetActive(false); // LIGHT 2D (Tat den cua Ngo Tat To)
 
             if (!isFadeOut)
             {
