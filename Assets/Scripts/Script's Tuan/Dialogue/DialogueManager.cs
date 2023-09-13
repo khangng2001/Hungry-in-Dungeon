@@ -3,21 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    [Header("Dialogue Panel")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI dialogueName;
     [SerializeField] private Image face;
 
+    [Header("In game")]
+    [SerializeField] private GameObject notification;
+    [SerializeField] private GameObject choise;
+
+    [Header("In Script")]
+    [SerializeField] private string dialogueType;
     [SerializeField] private string[] sentences;
     [SerializeField] private float wordSpeed;
     [SerializeField] private int index;
 
-    private bool isDialoguePlaying;
+    public bool isDialoguePlaying { get; private set; }
 
     private ItemSO item;
 
@@ -32,6 +40,8 @@ public class DialogueManager : MonoBehaviour
         index = 0;
         isDialoguePlaying = false;
         dialoguePanel.SetActive(false);
+        choise.SetActive(false);
+        notification.SetActive(false);
     }
 
     private void Update()
@@ -52,7 +62,13 @@ public class DialogueManager : MonoBehaviour
             {
                 wordSpeed = 0.01f;
             }
-        } 
+        }
+
+        //if (index == sentences.Length - 1 && dialogueType == "Choise")
+        //{
+        //    choise.SetActive(true);
+        //    isDialoguePlaying = false;
+        //}
     }
 
     public void EnterDialogueMode(DialogueSO dialogue, ItemSO itemNPC)
@@ -63,6 +79,7 @@ public class DialogueManager : MonoBehaviour
         sentences = dialogue.sentences;
         dialogueName.text = dialogue.name;
         face.sprite = dialogue.face;
+        dialogueType = dialogue.type.ToString();
 
         StartCoroutine(Typing());
     }
@@ -89,14 +106,28 @@ public class DialogueManager : MonoBehaviour
     {
         if (index < sentences.Length - 1)
         {
+            if (index == sentences.Length - 2 && dialogueType == "Choise")
+            {
+                choise.SetActive(true);
+            }
             index++;
             StartCoroutine(Typing());
-        } 
-        else
-        {
-            //GiveItem();
-            ExitDialogueMode();
         }
+        else if (index == sentences.Length - 1)
+        {
+            ExitDialogueMode();
+        } 
+    }
+
+    public void OnClickChoise0()
+    {
+        notification.SetActive(true);
+        ExitDialogueMode();
+    }
+
+    public void OnClickChoise1()
+    {
+        ExitDialogueMode();
     }
 
     private void GiveItem()

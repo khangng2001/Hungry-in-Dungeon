@@ -47,11 +47,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("currentIndex: " + currentIndexEntrance);
     }
 
     private void OnEnable()
     {
+        Debug.Log("currentIndex: " + currentIndexEntrance);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 

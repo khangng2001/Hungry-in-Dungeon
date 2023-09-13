@@ -10,12 +10,10 @@ public class DialogueTrigger : MonoBehaviour
 
     [SerializeField] private ItemSO item;
 
-    private bool isPushE;
     private bool playerInRange;
 
     private void Awake()
     {
-        isPushE = false;
         playerInRange = false;
         cue.SetActive(false);
     }
@@ -25,9 +23,8 @@ public class DialogueTrigger : MonoBehaviour
         if (playerInRange)
         {
             cue.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.E) && !isPushE)
+            if (Input.GetKeyDown(KeyCode.E) && !DialogueManager.instance.isDialoguePlaying)
             {
-                isPushE = true;
                 DialogueManager.instance.EnterDialogueMode(dialogue, item);
             }
         }
@@ -50,7 +47,6 @@ public class DialogueTrigger : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playerInRange = false;
-            isPushE = false;
         }
     }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e4587c194c34c4fbd5e5a55b1b393e, type: 3}
   m_Name: Dwarf
   m_EditorClassIdentifier: 
+  type: 1
   name: Dwarf
   face: {fileID: 21300000, guid: e99fbbf3494818c48ae56b8c2da2c28c, type: 3}
   sentences:
