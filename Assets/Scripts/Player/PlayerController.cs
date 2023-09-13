@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     //Coin Paper
     private int coinPaper;
 
+    // FADE BLACK
+    [SerializeField] private GameObject FadeBlack;
+
     // HEALTH PLAYER
     [SerializeField] private float maxHealth = 0f;
     private float currentHealth = 0f;
@@ -32,12 +35,15 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     [SerializeField] private Animator animator;
 
-    private PlayerInput input;
-    private PlayerController controller;
+    // PLAYER'S COMPONENT
+    private PlayerInput playerInput;
+    private PlayerController playerController;
 
     [SerializeField]private float moveSpeed = 5f;
     private Vector3 moveDir = Vector3.zero;
     public static PlayerController instance;
+    private bool canMove = true;
+
     private void Awake()
     {
         if (instance != null)
@@ -55,8 +61,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
-        input = GetComponent<PlayerInput>();
-        controller = GetComponent<PlayerController>();
+        playerInput = GetComponent<PlayerInput>();
+        playerController = GetComponent<PlayerController>();
         SetHealth(maxHealth);
         SetStamina(maxStamina);
         SetStrength(strength);
@@ -66,11 +72,14 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     {
         LifeController();
 
-        Moving();
+        if (canMove)
+        {
+            Moving();
 
-        FlipXByMouse();
+            FlipXByMouse();
 
-        FlipYByMouse();
+            FlipYByMouse();
+        }
 
         IncreaseStaminaByTime();
     }
@@ -80,14 +89,62 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         if (GetHealth() <= 0)
         {
             animator.Play("Die");
-            input.enabled = false;
-            controller.enabled = false;
+            playerInput.enabled = false;
+            //playerController.enabled = false;
+            transform.GetChild(1).gameObject.SetActive(false); // LIGHT2D (Tat den cua Ngo Tat To)
+
+            if (!isFadeOut)
+            {
+                isFadeOut = true;
+
+                // KHONG THE DI CHUYEN NUA
+                canMove = false;
+
+                FadeBlack.GetComponent<Animator>().Play("FadeOut");
+
+                StartCoroutine(AfterFadeOut());
+            }
         }
+    }
+
+    private bool isFadeOut = false;
+    IEnumerator AfterFadeOut()
+    {
+        yield return new WaitForSeconds(2f);
+
+        ResetPlayer();
+        FadeBlack.GetComponent<Animator>().Play("FadeIn");
+
+    }
+
+    private void ResetPlayer()
+    {
+        // SET UP LAI VI TRI SAU KHI PLAY AGAIN
+        transform.position = new Vector3(10.91f, -8.92f, 0f); // TUAN SE SET VI TRI NAY
+        //DataPersistence.instance.LoadGame();
+        //SceneManager.LoadScene(2);
+
+        // SET UP LAI THONG SO
+        SetHealth(maxHealth);
+        SetStamina(maxStamina);
+        SetStrength(strength);
+
+        // INPUT TRO LAI
+        playerInput.enabled = true;
+
+        // SETE UP LAI FADE DE CO THE SU DUNG LAI
+        isFadeOut = false;
+
+        // MO DEN
+        transform.GetChild(1).gameObject.SetActive(true);
+
+        // DI CHUYEN LAI BINH THUONG
+        canMove = true;
     }
 
     void FlipXByMouse()
     {
-        Vector2 direction = input.inputMosue - new Vector2(transform.position.x, transform.position.y);
+        Vector2 direction = playerInput.inputMosue - new Vector2(transform.position.x, transform.position.y);
 
         if (direction.x < 0)
         {
@@ -101,7 +158,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     void FlipYByMouse()
     {
-        Vector2 direction = input.inputMosue - new Vector2(transform.position.x, transform.position.y);
+        Vector2 direction = playerInput.inputMosue - new Vector2(transform.position.x, transform.position.y);
 
         if (direction.y < 0)
         {
@@ -115,8 +172,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     private void Moving()
     {
-        float horizontal = input.horizontal;
-        float vertical = input.vertical;
+        float horizontal = playerInput.horizontal;
+        float vertical = playerInput.vertical;
 
         moveDir.Set(horizontal, vertical, 0f);
         moveDir.Normalize();
