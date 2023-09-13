@@ -556,6 +556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 707334487}
   - component: {fileID: 707334486}
+  - component: {fileID: 707334488}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Portal
@@ -604,6 +605,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &707334488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707334485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c202123849f443c4ebf9fe07575681d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &939843791 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 76969958265235449, guid: 22342aac1ae281443bf627aa8c560ccd, type: 3}
@@ -2437,6 +2450,11 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
+--- !u!82 &1150924365 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5463604973366864448, guid: 11bd173e4642a1845be837f7a250ef5e, type: 3}
+  m_PrefabInstance: {fileID: 8610014970145046487}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1230200059
 GameObject:
   m_ObjectHideFlags: 0
@@ -6884,6 +6902,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5463604973366864448, guid: 11bd173e4642a1845be837f7a250ef5e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8b8d82e2fe0929145bc904eb6d30d49e, type: 3}
+    - target: {fileID: 5463604973366864448, guid: 11bd173e4642a1845be837f7a250ef5e, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610014968760627387, guid: 11bd173e4642a1845be837f7a250ef5e, type: 3}
+      propertyPath: dungeonMusic
+      value: 
+      objectReference: {fileID: 1150924365}
     - target: {fileID: 8610014968760627388, guid: 11bd173e4642a1845be837f7a250ef5e, type: 3}
       propertyPath: m_RootOrder
       value: 8

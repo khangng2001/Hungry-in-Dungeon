@@ -13,9 +13,13 @@ public class GameManager : MonoBehaviour
     public List<int> count;
     [Header("Recipe")]
     public List<RecipeSO> recipes;
-    [SerializeField] private int sceneIndex = 0;
+    
+    private static int sceneIndex = 2;
     [SerializeField] private Vector3[] entrances;
     [SerializeField] private int currentIndexEntrance = 0;
+
+    [SerializeField] private GameObject blackCurtain;
+    
     private void Awake()
     {
         if (instance != null)
@@ -28,35 +32,39 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-    
+
+    private void Update()
+    {
+        Debug.Log("currentIndex: " + currentIndexEntrance);
+    }
+
     private void OnEnable()
     {
-        currentIndexEntrance = 0;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable()
     {
-        currentIndexEntrance = 0;
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("OnSceneLoaded: " + scene.name);
         PlayBackgroundMusic();
     }
     
-    
+
     private void PlayBackgroundMusic()
     {
-        if (currentIndexEntrance == 0)
+        if (SceneManager.GetActiveScene().name == "Scene_01")
         {
             AudioManager.Instance.PlayBackgroundMusic();
+            AudioManager.Instance.StopDungeonMusic();
         }
         else
         {
-            AudioManager.Instance.PauseBackgroundMusic();
+            AudioManager.Instance.StopBackgroundMusic();
+            AudioManager.Instance.PlayDungeonMusic();
         }
     }
     public void SaveDataInventory()
@@ -98,20 +106,53 @@ public class GameManager : MonoBehaviour
     }
 
     //CHANGE SCENE
-    public void ChangeScene()
+    public void ProceedScene()
     {
-        sceneIndex++;
-        SceneManager.LoadScene(sceneIndex);
-        PlayerController.instance.transform.position = entrances[currentIndexEntrance];
-        currentIndexEntrance++;
-        if (currentIndexEntrance > entrances.Length)
-        {
-            currentIndexEntrance = currentIndexEntrance;
-        }
+        StartCoroutine(ProceedWaitForBlackCurtain());
     }
     
     
-   
+    
+    public void GoPreviousScene()
+    {
+        StartCoroutine(PreviousWaitForBlackCurtain());
+    }
+    
+    private IEnumerator ProceedWaitForBlackCurtain()
+    {
+        sceneIndex++;
+        currentIndexEntrance++;
+        blackCurtain.SetActive(true);
+        PlayerController.instance.transform.position = entrances[currentIndexEntrance];
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(sceneIndex);
+        yield return new WaitForSeconds(1f);
+        blackCurtain.SetActive(false);
+        
+    }
 
-   
+    private IEnumerator PreviousWaitForBlackCurtain()
+    {
+        currentIndexEntrance--;
+        sceneIndex--;
+        blackCurtain.SetActive(true);
+        PlayerController.instance.transform.position = entrances[currentIndexEntrance];
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(sceneIndex);
+        yield return new WaitForSeconds(1f);
+        blackCurtain.SetActive(false);
+        
+    }
+    
+    //=================SAVE AND LOAD DATA================
+    public void LoadData(GameData data)
+    {
+        sceneIndex = data.Scene;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.Scene = sceneIndex;
+    }
+
 }

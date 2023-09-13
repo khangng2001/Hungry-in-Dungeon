@@ -133,10 +133,6 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             DecreaseHealth(collision.gameObject.GetComponentInParent<EnemyHandle>().GetStrength());
             BloodOut();
         }
-        else if (collision.CompareTag("Portal"))
-        {
-            GameManager.instance.ChangeScene();
-        }
     }
 
     // ================= HANDLE HEALTH ======================

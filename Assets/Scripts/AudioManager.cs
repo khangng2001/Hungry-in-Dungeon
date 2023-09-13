@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioSource effectSource;
     [SerializeField] private AudioSource backgroundMusic;
+    [SerializeField] private AudioSource dungeonMusic;
     [SerializeField] private AudioSource fightMusic;
     private void Awake()
     {
@@ -35,11 +36,21 @@ public class AudioManager : MonoBehaviour
         backgroundMusic.Play();
     }
 
-    public void PauseBackgroundMusic()
+    public void StopBackgroundMusic()
     {
-        backgroundMusic.Pause();
+        backgroundMusic.Stop();
     }
 
+    public void PlayDungeonMusic()
+    {
+        dungeonMusic.Play();
+    }
+
+    public void StopDungeonMusic()
+    {
+        dungeonMusic.Stop();
+    }
+    
     public void PlayFightMusic()
     {
         fightMusic.Play();

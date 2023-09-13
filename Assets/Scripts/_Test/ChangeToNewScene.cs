@@ -15,7 +15,7 @@ public class ChangeToNewScene : MonoBehaviour
         if (check)
         {
             //Player reaches the door
-            GameManager.instance.ChangeScene();
+            GameManager.instance.ProceedScene();
         }
     }
 

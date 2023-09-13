@@ -35,7 +35,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene_04.unity
     guid: 4f57d9a9e8e51594d88d0498d25524cd
+<<<<<<< Updated upstream
   - enabled: 0
     path: Assets/Scenes/SingletonTest.unity
     guid: 43e7e17dd7b76ec418bd04f3e4370991
+=======
+>>>>>>> Stashed changes
   m_configObjects: {}
