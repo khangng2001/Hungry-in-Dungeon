@@ -78,6 +78,8 @@ public class DialogueManager : MonoBehaviour
 
     public void EnterDialogueMode(DialogueSO dialogue)
     {
+        Debug.Log("cos chay ");
+
         isDialoguePlaying = true;
         dialoguePanel.SetActive(true);
         sentences = dialogue.sentences;

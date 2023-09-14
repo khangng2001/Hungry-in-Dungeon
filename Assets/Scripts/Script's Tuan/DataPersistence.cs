@@ -98,9 +98,9 @@ public class DataPersistence : MonoBehaviour
     {
         GameData myAccount = await collection.FindOneAsync(new { pid = pid });
 
-        SceneManager.LoadScene(myAccount.Scene);
-
         LoadGame();
+
+        SceneManager.LoadScene(myAccount.Scene);
     }
 
     public async void LoadGame()
