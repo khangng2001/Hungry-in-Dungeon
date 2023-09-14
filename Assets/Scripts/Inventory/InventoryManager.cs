@@ -14,6 +14,8 @@ public class InventoryManager : MonoBehaviour
 
     int selectedSlot = -1;
 
+    [SerializeField] private float maxHealth = 100f;
+
     private void Awake()
     {
         instance = this;
@@ -87,30 +89,33 @@ public class InventoryManager : MonoBehaviour
     //use Item
     public ItemSO UseItem(bool use)
     {
-        InventorySlot slot = inventorySlots[selectedSlot];
-        InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+        if (PlayerController.instance.GetHealth() < maxHealth)
+        { 
+            InventorySlot slot = inventorySlots[selectedSlot];
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
 
-        //use if the selected item is food
-        if (itemInSlot.item.type == ItemType.Food)
-        {
-            if (itemInSlot != null)
+            //use if the selected item is food
+            if (itemInSlot.item.type == ItemType.Food)
             {
-                ItemSO item = itemInSlot.item;
-                if (use == true)
+                if (itemInSlot != null)
                 {
-                    PlayerController.instance.IncreaseHealth(item.health);
-                    PlayerController.instance.IncreaseStamina(item.stamina);
-                    itemInSlot.count--;
-                    if (itemInSlot.count <= 0)
+                    ItemSO item = itemInSlot.item;
+                    if (use == true)
                     {
-                        Destroy(itemInSlot.gameObject);
+                        PlayerController.instance.IncreaseHealth(item.health);
+                        PlayerController.instance.IncreaseStamina(item.stamina);
+                        itemInSlot.count--;
+                        if (itemInSlot.count <= 0)
+                        {
+                            Destroy(itemInSlot.gameObject);
+                        }
+                        else
+                        {
+                            itemInSlot.RefreshCount();
+                        }
                     }
-                    else
-                    {
-                        itemInSlot.RefreshCount();
-                    }
+                    return item;
                 }
-                return item;
             }
         }
         return null;
