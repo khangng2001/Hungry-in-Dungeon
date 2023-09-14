@@ -64,7 +64,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2549572308757279945
 Transform:
   m_ObjectHideFlags: 0
@@ -142,4 +142,5 @@ MonoBehaviour:
   - {fileID: 4179150854586636519, guid: ed70aea0becc53f43b78ee5916287c2c, type: 3}
   - {fileID: 7699208396289725609, guid: 36a62871a33bf9a41b66f4993091807f, type: 3}
   - {fileID: 4617297448524556584, guid: ccf6ea89aceb60848a3986b913d5e9c4, type: 3}
-  player: {fileID: 0}
+  maxHealth: 100
+  eatingSound: {fileID: 8300000, guid: b727aa577a5de00489bd3061c818f65c, type: 3}
