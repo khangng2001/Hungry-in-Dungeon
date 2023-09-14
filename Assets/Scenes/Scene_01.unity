@@ -6762,6 +6762,14 @@ PrefabInstance:
       propertyPath: swordController
       value: 
       objectReference: {fileID: 1087349569932973434}
+    - target: {fileID: 1200260675180561565, guid: 22342aac1ae281443bf627aa8c560ccd, type: 3}
+      propertyPath: item.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200260675180561565, guid: 22342aac1ae281443bf627aa8c560ccd, type: 3}
+      propertyPath: count.Array.size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4067403035923815912, guid: 22342aac1ae281443bf627aa8c560ccd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
