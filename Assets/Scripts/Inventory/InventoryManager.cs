@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class InventoryManager : MonoBehaviour
@@ -166,7 +167,19 @@ public class InventoryManager : MonoBehaviour
         inventoryItem.InitialiseItem(item);
     }
 
-    //Remove all Item when Player Die
+    //Clear all Item when Player Die
+    public void ClearAllItem()
+    {
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            InventorySlot slot = inventorySlots[i];
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null)
+            {
+                Destroy(itemInSlot.gameObject);
+            }
+        }
+    }
 
     //Save 
     public ItemSO SaveDataItem(int i)
