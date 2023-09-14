@@ -24,6 +24,10 @@ public class CookingManager : MonoBehaviour
     [SerializeField] private GameObject cookBar;
     [SerializeField] private bool open = false;   //check resultSlot open or not
 
+    [Header("Sound")]
+    [SerializeField] private AudioClip cookingProgressSound;
+    [SerializeField] private AudioClip cookingFinishedSound;
+
     public List<ItemSO> itemList;
     [SerializeField] private string[] recipes;
     [SerializeField] private ItemSO[] recipeResults;
@@ -103,6 +107,7 @@ public class CookingManager : MonoBehaviour
                     break;
                 case State.Cooking:
                     cookBtn.SetActive(false);
+                    //AudioManager.Instance.PlaySoundEffect(cookingProgressSound);
                     //update CookBarUI
                     cookingProgressTimer += Time.deltaTime;
                     OnProgressBarChanged?.Invoke(this, new OnProgressBarChangedEventArgs
@@ -132,6 +137,7 @@ public class CookingManager : MonoBehaviour
                     {
                         progressBarNormalized = cookingProgressTimer
                     });
+                    AudioManager.Instance.PlaySoundEffect(cookingFinishedSound);
                     //switch State
                     state = State.Idle;
                     break;

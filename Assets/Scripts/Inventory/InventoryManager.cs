@@ -16,6 +16,9 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private float maxHealth = 100f;
 
+    [Header("Sound")]
+    [SerializeField] private AudioClip eatingSound;
+
     private void Awake()
     {
         instance = this;
@@ -102,6 +105,7 @@ public class InventoryManager : MonoBehaviour
                     ItemSO item = itemInSlot.item;
                     if (use == true)
                     {
+                        AudioManager.Instance.PlaySoundEffect(eatingSound);
                         PlayerController.instance.IncreaseHealth(item.health);
                         PlayerController.instance.IncreaseStamina(item.stamina);
                         itemInSlot.count--;
