@@ -15,11 +15,12 @@ namespace Enemy.Boss
         private Intro intro;
         private Ending ending;
         private float speed;
-    
+
         [SerializeField] private float timeOfFireRain;
 
         [SerializeField] private bool fireRain;
         [SerializeField] private GameObject player;
+        [SerializeField] private GameObject sister;
         [SerializeField] private RangeDetect rangeDetect;
         [SerializeField] private RangeHurt rangeHurt;
         [SerializeField] private GameObject RangeFireBall;
@@ -166,6 +167,10 @@ namespace Enemy.Boss
 
                         if (ending.GetIsFinish())
                         {
+                            // CO EM XUAT HIEN
+                            sister.SetActive(true);
+                            //
+
                             Destroy(gameObject);
                         }
                         //
