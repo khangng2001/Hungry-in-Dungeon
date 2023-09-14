@@ -25,7 +25,6 @@ public class CookingManager : MonoBehaviour
     [SerializeField] private bool open = false;   //check resultSlot open or not
 
     [Header("Sound")]
-    [SerializeField] private AudioClip cookingProgressSound;
     [SerializeField] private AudioClip cookingFinishedSound;
 
     public List<ItemSO> itemList;
@@ -108,7 +107,6 @@ public class CookingManager : MonoBehaviour
                     break;
                 case State.Cooking:
                     cookBtn.SetActive(false);
-                    //AudioManager.Instance.PlaySoundEffect(cookingProgressSound);
                     //update CookBarUI
                     cookingProgressTimer += Time.deltaTime;
                     OnProgressBarChanged?.Invoke(this, new OnProgressBarChangedEventArgs
