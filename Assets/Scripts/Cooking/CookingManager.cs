@@ -15,7 +15,6 @@ public class CookingManager : MonoBehaviour
     [SerializeField] private float cookingProgressMax;
     [SerializeField] private float cookingProgressTimer;
 
-    [SerializeField] private GameObject dropItemZone;
     [SerializeField] private CookingUI cookingUI;
     [SerializeField] private GameObject interactUI;
 
@@ -73,13 +72,11 @@ public class CookingManager : MonoBehaviour
                 {
                     cookingUI.Show();
                     open = true;
-                    dropItemZone.SetActive(false);
                 }
                 else
                 {
                     cookingUI.Hide();
                     open = false;
-                    dropItemZone.SetActive(true);
                 }
             }
         }
@@ -100,7 +97,6 @@ public class CookingManager : MonoBehaviour
     {
         if (open)
         {
-            dropItemZone.SetActive(false);
             switch (state)
             {
                 case State.Idle:

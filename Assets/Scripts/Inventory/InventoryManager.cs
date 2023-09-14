@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -13,7 +11,6 @@ public class InventoryManager : MonoBehaviour
     public int tempMaxStackedItems = 5;
 
     [SerializeField] private List<GameObject> itemPrefab;
-    [SerializeField] private GameObject player;
 
     int selectedSlot = -1;
 
