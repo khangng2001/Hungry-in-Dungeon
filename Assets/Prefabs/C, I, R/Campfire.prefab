@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a600ae1d26f524995727c1a0b1042b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cookingProgressMax: 3
+  cookingProgressMax: 4
   cookingProgressTimer: 0
   cookingUI: {fileID: 0}
   interactUI: {fileID: 5341397940583812953}
@@ -442,6 +442,8 @@ MonoBehaviour:
   cookBtn: {fileID: 0}
   cookBar: {fileID: 0}
   open: 0
+  cookingProgressSound: {fileID: 8300000, guid: bd452268543a5204b8d751417c849bcc, type: 3}
+  cookingFinishedSound: {fileID: 8300000, guid: 765f0ccb9316f9c4eaf3ecb83d51adf8, type: 3}
   itemList:
   - {fileID: 0}
   - {fileID: 0}
