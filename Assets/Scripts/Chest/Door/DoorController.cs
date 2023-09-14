@@ -12,11 +12,15 @@ public class DoorController : MonoBehaviour
     [SerializeField] private GameObject textE;
     [SerializeField] private GameObject player;
 
+    [SerializeField] private bool isOpened;
+
     private void Awake()
     {
         rangeOpen = GetComponentInChildren<RangeOpen>();
 
         animator = GetComponent<Animator>();
+
+        isOpened = false;
     }
 
     private void Update()
@@ -32,7 +36,7 @@ public class DoorController : MonoBehaviour
         {
             player = rangeOpen.GetPlayer();
 
-            if (player.transform.GetChild(3).gameObject.activeSelf == true)
+            if (player.transform.GetChild(3).gameObject.activeSelf == true && !isOpened)
             {
                 textE.SetActive(true);
 
@@ -61,6 +65,8 @@ public class DoorController : MonoBehaviour
                 GetComponent<Collider2D>().enabled = false;
 
                 textE.SetActive(false);
+
+                isOpened = true;
             }
         }
     }

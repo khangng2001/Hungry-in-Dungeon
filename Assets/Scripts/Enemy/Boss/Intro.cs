@@ -11,6 +11,7 @@ public class Intro : MonoBehaviour
     [SerializeField] private bool isSlinding;
     [SerializeField] private bool isBacking;
     [SerializeField] private bool isFinish;
+    [SerializeField] private bool canMove;
 
     private void Awake()
     {
@@ -20,33 +21,42 @@ public class Intro : MonoBehaviour
         isSlinding = true;
         isBacking = false;
         isFinish = false;
+        canMove = false;
     }
 
     private void Update()
     {
+        // WHEN PLAYER COMING DRAGON HOME
         if (rangeDetect.GetIsDetect())
         {
+            // GET OBJECT PLAYER
             player = rangeDetect.GetComponent<RangeDetect>().player;
 
+            // WHEN CAMERA AND DRAGON ENOUGH CLOSE
             if (Vector2.Distance(camera.transform.position, transform.position) > 0.2f && isSlinding)
             {
+                // LOCK PLAYER AND CAMERA
                 Lock();
 
-                MoveToDragon();
+                // CAN MOVE AFTER START DRAGON'S ROAR SOUND
+                if (canMove)
+                {
+                    MoveToDragon();
+                }
+
+                // SET UP TIME TO HEAR DRAGON'S ROAR SOUND
+                if (!isStartIntroSound)
+                {
+                    isStartIntroSound = true;
+
+                    StartCoroutine(StartIntroSound());
+                }
             }
             else
             {
                 isSlinding = false;
 
-                //if (isFlyDown)
-                //{
-                //    isFlyDown = false;
-
-                //    GetComponentInChildren<Animator>().Play("Appear");
-
-                //    StartCoroutine(FlyDownAnimation());
-                //}
-
+                // WHEN CAMERA AND PLAYER ENOUGH CLOSE
                 if (Vector2.Distance(player.transform.position, camera.transform.position) > 0.2f && isBacking)
                 {
                     MoveToPlayer();
@@ -61,6 +71,15 @@ public class Intro : MonoBehaviour
             }
         }
     }
+
+    private bool isStartIntroSound = false;
+    IEnumerator StartIntroSound()
+    {
+        yield return new WaitForSeconds(2f);
+
+        canMove = true;
+    }
+
 
     public void SetIsBacking(bool enable)
     {

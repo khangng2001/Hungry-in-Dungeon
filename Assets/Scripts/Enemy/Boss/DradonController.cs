@@ -251,11 +251,17 @@ namespace Enemy.Boss
             fireRain = false;
         }
 
+        private bool isStartIntroSound = false;
         private void Intro()
         {
             // KICH HOAT DONG CUA
 
-            //AudioManager.Instance.PlaySoundEffect(roarSoundEffect);
+            if (!isStartIntroSound)
+            {
+                isStartIntroSound = true;
+
+                AudioManager.Instance.PlaySoundEffect(roarSoundEffect);
+            }
 
             if (!intro.GetIsSliding())
             {
@@ -271,7 +277,6 @@ namespace Enemy.Boss
                 animator.Play("FireRain");
             }
         }
-
 
         private bool isFlyDown = false;
         IEnumerator FlyDown()
