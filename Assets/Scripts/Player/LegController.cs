@@ -17,12 +17,15 @@ public class LegController : MonoBehaviour
         if (fall)
         {
             player.GetComponent<PlayerInput>().enabled = false;
-            player.GetComponent<PlayerController>().enabled = false;
+            player.GetComponent<PlayerController>().SetCanMove(false);
 
 
             if (player.transform.localScale.x == 0f || player.transform.localScale.y <= 0f)
             {
 
+                player.GetComponent<PlayerController>().SetCurrentHealth(0f);
+                //player.GetComponent<PlayerController>().ResetPlayer();
+                fall = false;
             }
             else if (player.transform.localScale.x < 0f)
             {

@@ -134,12 +134,15 @@ public class GameManager : MonoBehaviour
     {
         sceneIndex++;
         currentIndexEntrance++;
-        
+
+        blackFade.transform.parent.gameObject.GetComponent<Canvas>().sortingOrder = 200;
         blackFade.GetComponent<Animator>().Play("FadeOut");
         yield return new WaitForSeconds(1f);
         PlayerController.instance.transform.position = entrances[currentIndexEntrance];
+        
         SceneManager.LoadScene(sceneIndex);
         yield return new WaitForSeconds(0.5f);
+        blackFade.transform.parent.gameObject.GetComponent<Canvas>().sortingOrder = 0;
         blackFade.GetComponent<Animator>().Play("FadeIn");
         
     }
@@ -148,13 +151,20 @@ public class GameManager : MonoBehaviour
     {
         currentIndexEntrance--;
         sceneIndex--;
+        blackFade.transform.parent.gameObject.GetComponent<Canvas>().sortingOrder = 200;
         blackFade.GetComponent<Animator>().Play("FadeOut");
         yield return new WaitForSeconds(1f);
         PlayerController.instance.transform.position = entrances[currentIndexEntrance];
         SceneManager.LoadScene(sceneIndex);
         yield return new WaitForSeconds(0.5f);
+        blackFade.transform.parent.gameObject.GetComponent<Canvas>().sortingOrder = 0;
         blackFade.GetComponent<Animator>().Play("FadeIn");
         
+    }
+
+    public int GetSceneIndex()
+    {
+        return sceneIndex;
     }
     
     //=================SAVE AND LOAD DATA================

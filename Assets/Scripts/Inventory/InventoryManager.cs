@@ -92,7 +92,7 @@ public class InventoryManager : MonoBehaviour
     //use Item
     public ItemSO UseItem(bool use)
     {
-        if (PlayerController.instance.GetHealth() < maxHealth)
+        if (PlayerController.instance.GetCurrentHealth() < maxHealth)
         { 
             InventorySlot slot = inventorySlots[selectedSlot];
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();

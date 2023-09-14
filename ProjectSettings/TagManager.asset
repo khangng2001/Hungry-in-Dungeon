@@ -12,6 +12,7 @@ TagManager:
   - Leg
   - Portal
   - Entrance
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

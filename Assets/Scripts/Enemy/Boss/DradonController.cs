@@ -134,6 +134,12 @@ namespace Enemy.Boss
                 // GET PLAYER FROM RANGE DETECT
                 player = rangeDetect.GetComponent<RangeDetect>().player;
 
+                // WHEN PLAYER DIE
+                if (player.GetComponent<PlayerController>().GetCurrentHealth() == 0f)
+                {
+                    HUDOfBoss.SetActive(false);
+                }
+
                 if (!intro.GetIsFinish())
                 {
                     changeState = States.Intro;
