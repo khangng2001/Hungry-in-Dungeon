@@ -79,12 +79,29 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         oldCheckPointIndex = 3;
     }
 
+    //private void OnEnable()
+    //{
+
+    //    SceneManager.sceneLoaded += OnSceneLoaded;
+
+    //}
+
+    //private void OnDisable()
+    //{
+    //    SceneManager.sceneLoaded -= OnSceneLoaded;
+    //}
+
+    //void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    //{
+    //    this.gameObject.SetActive(true);
+    //}
+
     void Update()
     {
-        //if (DialogueManager.instance.isDialoguePlaying)
-        //{
-        //    return;
-        //}
+        if (DialogueManager.instance.isDialoguePlaying)
+        {
+            return;
+        }
 
         LifeController();
 

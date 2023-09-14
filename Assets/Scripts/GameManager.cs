@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IDataPersistence
 {
     public static GameManager instance;
     [Header("Inventory")]
@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("currentIndex: " + currentIndexEntrance);
         SceneManager.sceneLoaded += OnSceneLoaded;
+
     }
 
     private void OnDisable()
@@ -63,12 +64,14 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         PlayBackgroundMusic();
+
+        this.gameObject.SetActive(true);
     }
-    
+
 
     private void PlayBackgroundMusic()
     {
-        if (SceneManager.GetActiveScene().name == "Scene_01")
+        /*if (SceneManager.GetActiveScene().name == "Scene_01")
         {
             AudioManager.Instance.PlayBackgroundMusic();
             AudioManager.Instance.StopDungeonMusic();
@@ -77,7 +80,7 @@ public class GameManager : MonoBehaviour
         {
             AudioManager.Instance.StopBackgroundMusic();
             AudioManager.Instance.PlayDungeonMusic();
-        }
+        }*/
     }
     public void SaveDataInventory()
     {

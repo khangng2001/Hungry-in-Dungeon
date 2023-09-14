@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
+    private int scene;
+
     public void OnNewGameClicked()
     {
         DataPersistence.instance.NewGame();
@@ -13,7 +15,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void OnLoadGameClicked()
     {
-        DataPersistence.instance.LoadGame();
-        SceneManager.LoadScene(2);
+        DataPersistence.instance.Continue();
+        //SceneManager.LoadScene(2);
     }
 }

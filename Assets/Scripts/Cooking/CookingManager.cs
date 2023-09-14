@@ -54,6 +54,7 @@ public class CookingManager : MonoBehaviour
     private Collider2D hit = null;
     [SerializeField] private LayerMask playerMask;
     [SerializeField] private float radiusCheck;
+
     private void CheckPlayer()
     {
         hit = Physics2D.OverlapCircle(transform.position, radiusCheck, playerMask);
@@ -235,5 +236,10 @@ public class CookingManager : MonoBehaviour
                 itemList[i] = null;
             }
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        DataPersistence.instance.SaveGame();
     }
 }
