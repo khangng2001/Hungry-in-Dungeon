@@ -11,6 +11,7 @@ public class DoorController : MonoBehaviour
 
     [SerializeField] private GameObject textE;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject colider;
 
     [SerializeField] private bool isOpened;
 
@@ -62,7 +63,8 @@ public class DoorController : MonoBehaviour
 
                 animator.Play("Open");
 
-                GetComponent<Collider2D>().enabled = false;
+                colider.SetActive(false);
+                //GetComponent<Collider2D>().enabled = false;
 
                 textE.SetActive(false);
 
