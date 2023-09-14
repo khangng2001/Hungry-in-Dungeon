@@ -9,9 +9,10 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 {
     //Coin Paper
     private int coinPaper;
+    [SerializeField] private TextMeshProUGUI textCoinPaper;
 
     // FADE BLACK
-     [SerializeField] private GameObject fadeDie;
+    [SerializeField] private GameObject fadeDie;
     // HEALTH PLAYER
     [SerializeField] private float maxHealth = 0f;
     private float currentHealth = 0f;
@@ -221,8 +222,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     private void LoadCoinPaper()
     {
-        //update UI
-        Debug.Log(coinPaper);
+        textCoinPaper.text = coinPaper.ToString();
     }
 
     // ==========================================

@@ -26,8 +26,8 @@ public class TestGiveRecipe : MonoBehaviour
         if (recipePapers.Count > 0)
         {
             RecipeManager.instance.AddRecipe(recipePapers[0]);
-            recipePapers[0] = null;
             GameManager.instance.SaveDataRecipe(recipePapers[0]);
+            recipePapers[0] = null;
         }
     }
 }

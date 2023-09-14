@@ -15,7 +15,6 @@ public class CookingManager : MonoBehaviour
     [SerializeField] private float cookingProgressMax;
     [SerializeField] private float cookingProgressTimer;
 
-    [SerializeField] private GameObject dropItemZone;
     [SerializeField] private CookingUI cookingUI;
     [SerializeField] private GameObject interactUI;
 
@@ -24,6 +23,10 @@ public class CookingManager : MonoBehaviour
     [SerializeField] private GameObject cookBtn;
     [SerializeField] private GameObject cookBar;
     [SerializeField] private bool open = false;   //check resultSlot open or not
+
+    [Header("Sound")]
+    [SerializeField] private AudioClip cookingProgressSound;
+    [SerializeField] private AudioClip cookingFinishedSound;
 
     public List<ItemSO> itemList;
     [SerializeField] private string[] recipes;
@@ -73,13 +76,11 @@ public class CookingManager : MonoBehaviour
                 {
                     cookingUI.Show();
                     open = true;
-                    dropItemZone.SetActive(false);
                 }
                 else
                 {
                     cookingUI.Hide();
                     open = false;
-                    dropItemZone.SetActive(true);
                 }
             }
         }
@@ -100,13 +101,13 @@ public class CookingManager : MonoBehaviour
     {
         if (open)
         {
-            dropItemZone.SetActive(false);
             switch (state)
             {
                 case State.Idle:
                     break;
                 case State.Cooking:
                     cookBtn.SetActive(false);
+                    //AudioManager.Instance.PlaySoundEffect(cookingProgressSound);
                     //update CookBarUI
                     cookingProgressTimer += Time.deltaTime;
                     OnProgressBarChanged?.Invoke(this, new OnProgressBarChangedEventArgs
@@ -136,6 +137,7 @@ public class CookingManager : MonoBehaviour
                     {
                         progressBarNormalized = cookingProgressTimer
                     });
+                    AudioManager.Instance.PlaySoundEffect(cookingFinishedSound);
                     //switch State
                     state = State.Idle;
                     break;
