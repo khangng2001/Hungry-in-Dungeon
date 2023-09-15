@@ -14,11 +14,13 @@ public class ConnectMongoDb : MonoBehaviour
     [SerializeField] private GameObject loginUI;
     [SerializeField] private GameObject registerUI;
     [SerializeField] private GameObject loadingUI;
+    [SerializeField] private GameObject notificationUI;
 
     [SerializeField] private TMP_InputField nameLoginField;
     [SerializeField] private TMP_InputField passLoginField;
     [SerializeField] private TMP_InputField nameRegisterField;
     [SerializeField] private TMP_InputField passRegisterField;
+    [SerializeField] private TextMeshProUGUI textNotification;
 
     [SerializeField] private string appID = "hungryindungeon-wedpp";
 
@@ -48,6 +50,7 @@ public class ConnectMongoDb : MonoBehaviour
                     loginUI.SetActive(true);
                     registerUI.SetActive(false);
                     loadingUI.SetActive(false);
+                    notificationUI.SetActive(false);
                     break;
                 }
             case SceneStatus.Register:
@@ -55,6 +58,7 @@ public class ConnectMongoDb : MonoBehaviour
                     loginUI.SetActive(false);
                     registerUI.SetActive(true);
                     loadingUI.SetActive(false);
+                    notificationUI.SetActive(false);
                     break;
                 }
             case SceneStatus.Loading:
@@ -62,6 +66,7 @@ public class ConnectMongoDb : MonoBehaviour
                     loginUI.SetActive(false);
                     registerUI.SetActive(false);
                     loadingUI.SetActive(true);
+                    notificationUI.SetActive(false);
                     break;
                 }
         }
@@ -80,7 +85,8 @@ public class ConnectMongoDb : MonoBehaviour
         }
         catch (AppException ex)
         {
-            Debug.LogError(ex.Message);
+            notificationUI.SetActive(true);
+            textNotification.text = ex.Message;
         }
     }
 
@@ -96,7 +102,8 @@ public class ConnectMongoDb : MonoBehaviour
         }
         catch (AppException ex)
         {
-            Debug.LogError(ex.Message);
+            notificationUI.SetActive(true);
+            textNotification.text = ex.Message;
         }
     }
 
@@ -110,6 +117,12 @@ public class ConnectMongoDb : MonoBehaviour
         SwitchStateSceneStatus(SceneStatus.Register);
     }
 
+    public void OffNotification()
+    {
+        notificationUI.SetActive(false);
+        SwitchStateSceneStatus(SceneStatus.Login);
+    }
+    
     private void ConnectMongoDbHID()
     {
         app = App.Create(appID);
