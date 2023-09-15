@@ -70,7 +70,7 @@ public class DataPersistence : MonoBehaviour
     public void OnSceneUnLoaded(Scene scene)
     {
         Debug.Log("OnSceneUnLoaded Called: " + scene.name);
-        SaveGame();
+        //SaveGame();
     }
 
     private async Task<string> FindPlayerPid(string findPid)
@@ -97,25 +97,31 @@ public class DataPersistence : MonoBehaviour
     public async void Continue()
     {
         GameData myAccount = await collection.FindOneAsync(new { pid = pid });
-
-        LoadGame();
-
         SceneManager.LoadScene(myAccount.Scene);
+        LoadGame();
     }
 
     public async void LoadGame()
     {
-        GameData myAccount = await collection.FindOneAsync(new { pid = pid });
-
-        // Load any saved data from a player in mongodb
-        Debug.Log("pid error: " + myAccount.Pid);
-        myAccount = await dataHandler.Load(myAccount.Pid);
-
-        // Push the load data to all other script that need it
-        foreach (IDataPersistence dataPersistenceObj in dataPersistencesObjects)
+        try
         {
-            dataPersistenceObj.LoadData(myAccount);
+            GameData myAccount = await collection.FindOneAsync(new { pid = pid });
+
+            // Load any saved data from a player in mongodb
+            Debug.Log("pid error: " + myAccount.Pid);
+            myAccount = await dataHandler.Load(myAccount.Pid);
+
+            // Push the load data to all other script that need it
+            foreach (IDataPersistence dataPersistenceObj in dataPersistencesObjects)
+            {
+                dataPersistenceObj.LoadData(myAccount);
+            }
         }
+        catch (AppException ex)
+        {
+            Debug.LogException(ex);
+        }
+
     }
 
     public async void SaveGame()

@@ -41,7 +41,7 @@ public class CloudDataHandler
     {
         try
         {
-            await collection.UpdateOneAsync(new { pid = findPid }, data, upsert: true);
+            await collection.UpdateOneAsync(new { pid = findPid }, data, upsert: false);
         }
         catch (AppException ex)
         {

@@ -16,6 +16,6 @@ public class MainMenuScript : MonoBehaviour
     public void OnLoadGameClicked()
     {
         DataPersistence.instance.Continue();
-        //SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 }

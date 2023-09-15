@@ -13,6 +13,8 @@ public class TestSaveLoadInventory : MonoBehaviour, IDataPersistence
     [Header("Recipe")]
     public RecipeSO[] recipes;
 
+    public static TestSaveLoadInventory instance;
+
     public void LoadData(GameData data)
     {
         /*INVENTORY*/

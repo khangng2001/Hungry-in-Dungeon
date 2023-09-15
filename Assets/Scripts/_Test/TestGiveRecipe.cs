@@ -7,19 +7,7 @@ public class TestGiveRecipe : MonoBehaviour
 
     public void GiveRecipe()
     {
-        if (RecipeManager.instance.listOfPaperUI.Count == 0)
-        {
-            AddRecipe();
-        } else if (RecipeManager.instance.listOfPaperUI.Count > 0) {
-            if (PlayerController.instance.GetCointPaper() > 0)
-            {
-                AddRecipe();
-                PlayerController.instance.DecreaseCoinPaper();
-            } else
-            {
-                Debug.Log("You dont have enough coinPaper");
-            }
-        }
+        AddRecipe();
     }
     private void AddRecipe()
     {

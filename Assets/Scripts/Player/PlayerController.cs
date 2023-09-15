@@ -5,13 +5,10 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Serialization;
 using UnityEngine.SceneManagement;
+using Realms.Sync.Exceptions;
 
 public class PlayerController : MonoBehaviour, IDataPersistence
 {
-    //Coin Paper
-    private int coinPaper;
-    [SerializeField] private TextMeshProUGUI textCoinPaper;
-
     // FADE BLACK
     [SerializeField] private GameObject fadeDie;
     // HEALTH PLAYER
@@ -261,31 +258,6 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         }
     }
 
-    // ================= HANDLE COINPAPER ======================
-    public int GetCointPaper()
-    {
-        return coinPaper;
-    }
-
-    public void IncreaseCoinPaper()
-    {
-        coinPaper++;
-        LoadCoinPaper();
-    }
-
-    public void DecreaseCoinPaper()
-    {
-        coinPaper--;
-        LoadCoinPaper();
-    }
-
-    private void LoadCoinPaper()
-    {
-        textCoinPaper.text = coinPaper.ToString();
-    }
-
-    // ==========================================
-
     // ================= HANDLE HEALTH ======================
     public void SetMaxHealth(float newMaxHealth)
     {
@@ -339,6 +311,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     public void SetCurrentHealth(float newCurrentHealth)
     {
         currentHealth = newCurrentHealth;
+        LoadHealth();
     }
 
     public float GetCurrentHealth()
@@ -465,25 +438,49 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     // ======================= SAVE AND LOAD DATA =========================
     public void LoadData(GameData data)
     {
-        //player's position
-        transform.position = new Vector3(data.Position.X, data.Position.Y, data.Position.Z);
+        try
+        {
+            //player's position
+            transform.position = new Vector3(data.Position.X, data.Position.Y, data.Position.Z);
 
-        //Coin Paper
-        coinPaper = data.CoinPaper;
+            //Health
+            SetCurrentHealth(data.Health);
+
+            //Damage
+            SetStrength(data.Damage);
+        }
+        catch (AppException ex)
+        {
+            Debug.LogException(ex);
+        }
+
+
     }
 
     public void SaveData(ref GameData data)
     {
-        //player's position
-        data.Position = new Position
+        try
         {
-            X = transform.position.x,
-            Y = transform.position.y,
-            Z = transform.position.z
-        };
+            //player's position
+            data.Position = new Position
+            {
+                X = transform.position.x,
+                Y = transform.position.y,
+                Z = transform.position.z
+            };
 
-        //Coin Paper
-        data.CoinPaper = coinPaper;
+            //Health
+            data.Health = GetCurrentHealth();
+
+            //Damage
+            data.Damage = GetStrength();
+        }
+        catch (AppException ex)
+        {
+            Debug.LogException(ex);
+        }
+
+
     }
     
     

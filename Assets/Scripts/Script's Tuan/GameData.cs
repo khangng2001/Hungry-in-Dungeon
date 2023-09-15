@@ -38,13 +38,13 @@ public partial class GameData
     [BsonElement("position")]
     public Position Position { get; set; }
     [BsonElement("health")]
-    public int Health { get; set; }
+    public float Health { get; set; }
     [BsonElement("exp")]
     public int Exp { get; set; }
     [BsonElement("level")]
     public int Level { get; set; }
     [BsonElement("damage")]
-    public int Damage { get; set; }
+    public float Damage { get; set; }
     [BsonElement("recipeListCount")]
     public int RecipeListCount { get; set; }
     [BsonElement("coinPaper")]
