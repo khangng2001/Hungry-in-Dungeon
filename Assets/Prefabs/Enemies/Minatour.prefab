@@ -305,8 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemList:
-  - {fileID: 4179150854586636519, guid: ed70aea0becc53f43b78ee5916287c2c, type: 3}
-  - {fileID: 4617297448524556584, guid: ccf6ea89aceb60848a3986b913d5e9c4, type: 3}
+  - {fileID: 4179150854586636519, guid: 954d4d617c43d214c8663e808d192209, type: 3}
   spawnChance: 0.5
 --- !u!1 &7689075225206042872
 GameObject:
@@ -453,7 +452,7 @@ SpriteRenderer:
   m_Size: {x: 3.125, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!95 &7689075225589958862

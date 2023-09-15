@@ -156,9 +156,9 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         // SET UP LAI VI TRI SAU KHI PLAY AGAIN
 
         //transform.position = currentCheckPoint;
+        AudioManager.Instance.StopFightMusic();
         SceneManager.LoadScene(oldCheckPointIndex);
         transform.position = checkPoint;
-
 
         //if (hasTouchedCheckpoint)
         //{
@@ -255,6 +255,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             hasTouchedCheckpoint = true;
             oldCheckPointIndex = GameManager.instance.GetSceneIndex();
             checkPoint = collision.gameObject.GetComponent<Transform>().transform.position;
+            DataPersistence.instance.SaveGame();
         }
     }
 
@@ -448,13 +449,14 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
             //Damage
             SetStrength(data.Damage);
+
+            //Checkpoint
+            checkPoint = new Vector3(data.Position.X, data.Position.Y, data.Position.Z);
         }
         catch (AppException ex)
         {
             Debug.LogException(ex);
         }
-
-
     }
 
     public void SaveData(ref GameData data)

@@ -380,6 +380,7 @@ namespace Enemy.Boss
 
             // BIEN MAT THANH MAU BOSS
             HUDOfBoss.SetActive(false);
+            AudioManager.Instance.StopFightMusic();
             //
 
             ending.SetIsBacking(true);

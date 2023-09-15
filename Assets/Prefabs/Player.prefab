@@ -531,7 +531,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 5
   m_Sprite: {fileID: -1765789123, guid: 83ac4ed2721ab1b4196413b403db39ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -579,8 +579,8 @@ MonoBehaviour:
   player: {fileID: 7548341230766466175}
   keng: {fileID: 7091767288062573498, guid: fd989df9864a3bf4fb19ba6aeb2c9fd4, type: 3}
   CLICK: 0
-  swordEffectSound: {fileID: 8300000, guid: 91c522434cb184c41a92cafbf7885d43, type: 3}
-  swordStabEffectSound: {fileID: 8300000, guid: 60f4d0568bc6ce54b82339fec93187db, type: 3}
+  swordEffectSound: {fileID: 8300000, guid: 6a3d8470b72c33f44a85868ef61c335c, type: 3}
+  swordStabEffectSound: {fileID: 8300000, guid: 0df70c1f43646224fb4f8a44e9e7eefb, type: 3}
 --- !u!70 &7548341230566593109
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -686,7 +686,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4256504e1bbb941bb80d51bacbecd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textCoinPaper: {fileID: 0}
   fadeDie: {fileID: 0}
   maxHealth: 100
   healthBar: {fileID: 0}

@@ -55,4 +55,9 @@ public class AudioManager : MonoBehaviour
     {
         fightMusic.Play();
     }
+
+    public void StopFightMusic()
+    {
+        fightMusic.Stop();
+    }
 }

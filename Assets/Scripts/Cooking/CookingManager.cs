@@ -236,8 +236,8 @@ public class CookingManager : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         DataPersistence.instance.SaveGame();
-    }
+    }*/
 }

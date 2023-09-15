@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     [SerializeField] private int currentIndexEntrance = 0;
     
     [SerializeField] private GameObject blackFade;
+    [SerializeField] private GameObject panelPause;
 
     public int CurrentIndexEntrance
     {
@@ -176,6 +177,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         sceneIndex = data.Scene;
+        currentIndexEntrance = sceneIndex - 2;
     }
 
     public void SaveData(ref GameData data)
@@ -183,4 +185,21 @@ public class GameManager : MonoBehaviour, IDataPersistence
         data.Scene = sceneIndex;
     }
 
+    //
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        panelPause.SetActive(true);
+    }
+
+    public void ContinueGame()
+    {
+        Time.timeScale = 1;
+        panelPause.SetActive(false);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
