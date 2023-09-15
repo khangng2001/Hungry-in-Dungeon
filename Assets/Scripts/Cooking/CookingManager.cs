@@ -25,7 +25,6 @@ public class CookingManager : MonoBehaviour
     [SerializeField] private bool open = false;   //check resultSlot open or not
 
     [Header("Sound")]
-    [SerializeField] private AudioClip cookingProgressSound;
     [SerializeField] private AudioClip cookingFinishedSound;
 
     public List<ItemSO> itemList;
@@ -54,6 +53,7 @@ public class CookingManager : MonoBehaviour
     private Collider2D hit = null;
     [SerializeField] private LayerMask playerMask;
     [SerializeField] private float radiusCheck;
+
     private void CheckPlayer()
     {
         hit = Physics2D.OverlapCircle(transform.position, radiusCheck, playerMask);
@@ -107,7 +107,6 @@ public class CookingManager : MonoBehaviour
                     break;
                 case State.Cooking:
                     cookBtn.SetActive(false);
-                    //AudioManager.Instance.PlaySoundEffect(cookingProgressSound);
                     //update CookBarUI
                     cookingProgressTimer += Time.deltaTime;
                     OnProgressBarChanged?.Invoke(this, new OnProgressBarChangedEventArgs
@@ -235,5 +234,10 @@ public class CookingManager : MonoBehaviour
                 itemList[i] = null;
             }
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        DataPersistence.instance.SaveGame();
     }
 }

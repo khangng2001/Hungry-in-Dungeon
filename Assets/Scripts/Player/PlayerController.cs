@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Serialization;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour, IDataPersistence
 {
@@ -45,6 +46,11 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     public static PlayerController instance;
     private bool canMove = true;
 
+    [SerializeField] private Vector3 checkPoint;
+    [SerializeField] private bool hasTouchedCheckpoint;
+    [SerializeField] private Vector3 currentCheckPoint;
+    [SerializeField] private int oldCheckPointIndex;
+
     private void Awake()
     {
         if (instance != null)
@@ -64,17 +70,38 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         animator = GetComponentInChildren<Animator>();
         playerInput = GetComponent<PlayerInput>();
         playerController = GetComponent<PlayerController>();
-        SetHealth(maxHealth);
+        SetMaxHealth(maxHealth);
         SetStamina(maxStamina);
         SetStrength(strength);
+
+        currentCheckPoint = new Vector3(0f, 0f, 0f);
+        checkPoint = new Vector3(-10.75f, 3.84f, 0f);
+        oldCheckPointIndex = 3;
     }
+
+    //private void OnEnable()
+    //{
+
+    //    SceneManager.sceneLoaded += OnSceneLoaded;
+
+    //}
+
+    //private void OnDisable()
+    //{
+    //    SceneManager.sceneLoaded -= OnSceneLoaded;
+    //}
+
+    //void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    //{
+    //    this.gameObject.SetActive(true);
+    //}
 
     void Update()
     {
-        //if (DialogueManager.instance.isDialoguePlaying)
-        //{
-        //    return;
-        //}
+        if (DialogueManager.instance.isDialoguePlaying)
+        {
+            return;
+        }
 
         LifeController();
 
@@ -92,7 +119,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     void LifeController()
     {
-        if (GetHealth() <= 0)
+        if (GetCurrentHealth() <= 0)
         {
             animator.Play("Die");
             playerInput.enabled = false;
@@ -108,6 +135,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
                 fadeDie.GetComponent<Animator>().Play("FadeOut");
 
+                fadeDie.transform.parent.gameObject.GetComponent<Canvas>().sortingOrder = 200;
+
                 StartCoroutine(AfterFadeOut());
             }
         }
@@ -121,18 +150,33 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         ResetPlayer();
         fadeDie.GetComponent<Animator>().Play("FadeIn");
 
+        fadeDie.transform.parent.gameObject.GetComponent<Canvas>().sortingOrder = 0;
+
     }
 
-    private void ResetPlayer()
+    public void ResetPlayer()
     {
         // SET UP LAI VI TRI SAU KHI PLAY AGAIN
-        transform.position = GameManager.instance.entrances[GameManager.instance.CurrentIndexEntrance]; // TUAN SE SET VI TRI NAY
+
+        //transform.position = currentCheckPoint;
+        SceneManager.LoadScene(oldCheckPointIndex);
+        transform.position = checkPoint;
+
+
+        //if (hasTouchedCheckpoint)
+        //{
+        //    transform.position = checkPoint.transform.position;
+        //}
+        //else
+        //{
+        //    transform.position = GameManager.instance.entrances[GameManager.instance.CurrentIndexEntrance];
+        //}
         //DataPersistence.instance.LoadGame();
         //SceneManager.LoadScene(2);
-        
+
 
         // SET UP LAI THONG SO
-        SetHealth(maxHealth);
+        SetMaxHealth(maxHealth);
         SetStamina(maxStamina);
         SetStrength(strength);
 
@@ -147,6 +191,16 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
         // DI CHUYEN LAI BINH THUONG
         canMove = true;
+    }
+
+    public void SetCurrentCheckPoint (Vector3 newCheckPoint)
+    {
+        currentCheckPoint = newCheckPoint;
+    }
+
+    public Vector3 GetCurrentCheckPoint()
+    {
+        return currentCheckPoint;
     }
 
     void FlipXByMouse()
@@ -199,6 +253,11 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         {
             DecreaseHealth(collision.gameObject.GetComponentInParent<EnemyHandle>().GetStrength());
             BloodOut();
+        }else if(collision.CompareTag("Checkpoint"))
+        {
+            hasTouchedCheckpoint = true;
+            oldCheckPointIndex = GameManager.instance.GetSceneIndex();
+            checkPoint = collision.gameObject.GetComponent<Transform>().transform.position;
         }
     }
 
@@ -228,12 +287,17 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     // ==========================================
 
     // ================= HANDLE HEALTH ======================
-    public void SetHealth(float newHealth)
+    public void SetMaxHealth(float newMaxHealth)
     {
-        maxHealth = newHealth;
+        maxHealth = newMaxHealth;
         currentHealth = maxHealth;
         healthBar.GetComponent<Slider>().maxValue = maxHealth;
         LoadHealth();
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
     }
 
     public void LoadHealth()
@@ -272,7 +336,12 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         LoadHealth();
     }
 
-    public float GetHealth()
+    public void SetCurrentHealth(float newCurrentHealth)
+    {
+        currentHealth = newCurrentHealth;
+    }
+
+    public float GetCurrentHealth()
     {
         return currentHealth;
     }
@@ -381,6 +450,17 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         return moveSpeed;
     }
 
+    public bool GetCanMove()
+    {
+        return canMove;
+    }
+
+    public void SetCanMove(bool enable)
+    {
+        canMove = enable;
+    }
+
+    // ===========================================
 
     // ======================= SAVE AND LOAD DATA =========================
     public void LoadData(GameData data)
