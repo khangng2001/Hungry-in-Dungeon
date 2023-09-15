@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     private void Awake()
     {
+        blackFade.GetComponent<Animator>().Play("FadeInLonger");
+
         if (instance != null)
         {
             Destroy(gameObject);
@@ -157,7 +159,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         blackFade.transform.parent.gameObject.GetComponent<Canvas>().sortingOrder = 200;
         blackFade.GetComponent<Animator>().Play("FadeOut");
         yield return new WaitForSeconds(1f);
-        PlayerController.instance.transform.position = entrances[currentIndexEntrance];
+        PlayerController.instance.transform.position = entrances[currentIndexEntrance + 4];
         SceneManager.LoadScene(sceneIndex);
         yield return new WaitForSeconds(0.5f);
         blackFade.transform.parent.gameObject.GetComponent<Canvas>().sortingOrder = 0;

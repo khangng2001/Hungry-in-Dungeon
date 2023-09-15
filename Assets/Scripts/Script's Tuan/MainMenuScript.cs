@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
-    private int scene;
-
     public void OnNewGameClicked()
     {
         DataPersistence.instance.NewGame();
