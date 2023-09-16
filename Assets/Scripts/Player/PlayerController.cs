@@ -153,6 +153,9 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     public void ResetPlayer()
     {
+        //CLEAR ALL ITEM
+        InventoryManager.instance.ClearAllItem();
+
         // SET UP LAI VI TRI SAU KHI PLAY AGAIN
 
         //transform.position = currentCheckPoint;
