@@ -260,6 +260,11 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             checkPoint = collision.gameObject.GetComponent<Transform>().transform.position;
             DataPersistence.instance.SaveGame();
         }
+        else if (collision.CompareTag("PortalLevel1"))
+        {
+            StartCoroutine(GameManager.instance.WaitOnLoad());
+        }
+
     }
 
     // ================= HANDLE HEALTH ======================

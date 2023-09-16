@@ -43,7 +43,7 @@ public class IntroStartGame : MonoBehaviour
                 if (state.Equals("NewGame"))
                 {
                     DataPersistence.instance.NewGame();
-                    SceneManager.LoadScene(2);
+                    SceneManager.LoadScene(6);
                 }
                 else if (state.Equals("ContinueGame"))
                 {
@@ -71,20 +71,6 @@ public class IntroStartGame : MonoBehaviour
         // LOG OUT IN MONGO DB 
 
         //
-        SceneManager.LoadScene(0);
-    }
-
-    ///////////////////////////////////////////////
-
-    public void PauseGame()
-    {
-        Time.timeScale = 0;
-        panel.SetActive(true);
-    }
-
-    public void ContinueGame()
-    {
-        Time.timeScale = 1;
-        panel.SetActive(false);
+        Application.Quit();
     }
 }

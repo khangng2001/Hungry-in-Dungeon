@@ -163,6 +163,17 @@ public class GameManager : MonoBehaviour, IDataPersistence
         
     }
 
+    public IEnumerator WaitOnLoad() // DUOC GOI TU PORTAL LEVEL TUTORIAL
+    {
+        blackFade.GetComponent<Animator>().Play("FadeOut");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(2);
+        PlayerController.instance.transform.position = new Vector3(0f, 0f, 0f);
+
+        yield return new WaitForSeconds(0.5f);
+        blackFade.GetComponent<Animator>().Play("FadeIn");
+    }
+
     public int GetSceneIndex()
     {
         return sceneIndex;
