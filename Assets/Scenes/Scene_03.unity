@@ -40008,10 +40008,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1704796642}
-    - target: {fileID: 7689075224469123100, guid: 4b4d70b3ac8eba947b97304c481db4a2, type: 3}
-      propertyPath: m_InstanceId
-      value: -65784
-      objectReference: {fileID: 0}
     - target: {fileID: 7689075225071245946, guid: 4b4d70b3ac8eba947b97304c481db4a2, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -40059,30 +40055,6 @@ PrefabInstance:
     - target: {fileID: 7689075225071245947, guid: 4b4d70b3ac8eba947b97304c481db4a2, type: 3}
       propertyPath: m_Name
       value: Minatour
-      objectReference: {fileID: 0}
-    - target: {fileID: 7689075225589958862, guid: 4b4d70b3ac8eba947b97304c481db4a2, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: c4d914259e38ccc44a657dfaaa16a5e1, type: 2}
-    - target: {fileID: 7689075225589958865, guid: 4b4d70b3ac8eba947b97304c481db4a2, type: 3}
-      propertyPath: m_Size.x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7689075225589958865, guid: 4b4d70b3ac8eba947b97304c481db4a2, type: 3}
-      propertyPath: m_Size.y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7689075225589958865, guid: 4b4d70b3ac8eba947b97304c481db4a2, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 1617582848, guid: 0551b45cd7826ee4b9d98cf7050efbcb, type: 3}
-    - target: {fileID: 7689075225589958865, guid: 4b4d70b3ac8eba947b97304c481db4a2, type: 3}
-      propertyPath: m_MaskInteraction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7689075225589958865, guid: 4b4d70b3ac8eba947b97304c481db4a2, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b4d70b3ac8eba947b97304c481db4a2, type: 3}
