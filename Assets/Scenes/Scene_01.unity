@@ -455,6 +455,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4098146150700895968, guid: 58dc104cd194ae44892e17487c8df81a, type: 3}
   m_PrefabInstance: {fileID: 305474562}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &541687438 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7128808628336194281, guid: 68f6f6ddb3e4f6c4a892f8ac3f5893e1, type: 3}
+  m_PrefabInstance: {fileID: 623347728}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &565416225
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6393299833402214146, guid: 68f6f6ddb3e4f6c4a892f8ac3f5893e1, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6393299833402214146, guid: 68f6f6ddb3e4f6c4a892f8ac3f5893e1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3532,6 +3543,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 623347729}
     - target: {fileID: 194034395531146057, guid: 15e26ea2dc8c1c348bd18a51d329dc59, type: 3}
+      propertyPath: btncontinue
+      value: 
+      objectReference: {fileID: 541687438}
+    - target: {fileID: 194034395531146057, guid: 15e26ea2dc8c1c348bd18a51d329dc59, type: 3}
       propertyPath: dialogueName
       value: 
       objectReference: {fileID: 623347732}
@@ -3566,7 +3581,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 03a28daed323f0849a28a7ed34eda1f3, type: 2}
     - target: {fileID: 8524018847529040722, guid: 93bf7388255aaf14da67b492a0be5ac3, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8524018847529040722, guid: 93bf7388255aaf14da67b492a0be5ac3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7693,6 +7708,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2041777206, guid: 22342aac1ae281443bf627aa8c560ccd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00024414062
+      objectReference: {fileID: 0}
     - target: {fileID: 76969956750625994, guid: 22342aac1ae281443bf627aa8c560ccd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

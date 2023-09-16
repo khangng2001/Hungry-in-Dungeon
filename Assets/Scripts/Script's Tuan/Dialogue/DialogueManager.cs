@@ -14,6 +14,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI dialogueName;
     [SerializeField] private Image face;
+    [SerializeField] private Button btncontinue;
 
     [Header("In game")]
     [SerializeField] private GameObject notification;
@@ -47,6 +48,7 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         choise.SetActive(false);
         notification.SetActive(false);
+        btncontinue.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -56,7 +58,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (dialogueText.text == sentences[index])
             {
@@ -92,12 +94,14 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator Typing()
     {
+        btncontinue.gameObject.SetActive(false);
         dialogueText.text = "";
         foreach (char letter in sentences[index].ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(wordSpeed);
         }
+        btncontinue.gameObject.SetActive(true);
     }
 
     private void ExitDialogueMode()
