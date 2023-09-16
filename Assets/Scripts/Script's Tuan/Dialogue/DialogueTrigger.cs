@@ -8,6 +8,8 @@ public class DialogueTrigger : MonoBehaviour
 
     [SerializeField] private DialogueSO dialogue;
 
+    [SerializeField] private List<RecipeSO> recipePapers;
+
     private bool playerInRange;
 
     private void Awake()
@@ -23,6 +25,11 @@ public class DialogueTrigger : MonoBehaviour
             cue.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E) && !DialogueManager.instance.isDialoguePlaying)
             {
+                if (recipePapers[0] != null)
+                {
+                    DialogueManager.instance.TakeRecipe(recipePapers[0]);
+                    recipePapers[0] = null;
+                }
                 DialogueManager.instance.EnterDialogueMode(dialogue);
             }
         }
@@ -31,6 +38,8 @@ public class DialogueTrigger : MonoBehaviour
             cue.SetActive(false);
         }
     }
+
+ 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

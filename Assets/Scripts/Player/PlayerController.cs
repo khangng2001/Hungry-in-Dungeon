@@ -118,6 +118,9 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     {
         if (GetCurrentHealth() <= 0)
         {
+            //CLEAR ALL ITEM
+            InventoryManager.instance.ClearAllItem();
+
             animator.Play("Die");
             playerInput.enabled = false;
             //playerController.enabled = false;
@@ -153,8 +156,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     public void ResetPlayer()
     {
-        //CLEAR ALL ITEM
-        InventoryManager.instance.ClearAllItem();
+        
 
         // SET UP LAI VI TRI SAU KHI PLAY AGAIN
 

@@ -48,6 +48,8 @@ public class CookingManager : MonoBehaviour
         cookingUI.Hide();
         interactUI.SetActive(false);
         cookBtn.SetActive(false);
+
+        ActiveCookingSlot();
     }
 
     private Collider2D hit = null;
@@ -66,6 +68,8 @@ public class CookingManager : MonoBehaviour
 
     private void Update()
     {
+        CheckHowMuchRecipePlayerHas();
+
         CheckPlayer();
         if (hit != null)
         {
@@ -74,6 +78,7 @@ public class CookingManager : MonoBehaviour
             {
                 if (cookingUI.isActiveAndEnabled == false)
                 {
+                    ActiveCookingSlot();
                     cookingUI.Show();
                     open = true;
                 }
@@ -101,8 +106,6 @@ public class CookingManager : MonoBehaviour
     {
         if (open)
         {
-            CheckHowMuchRecipePlayerHas();
-
             switch (state)
             {
                 case State.Idle:

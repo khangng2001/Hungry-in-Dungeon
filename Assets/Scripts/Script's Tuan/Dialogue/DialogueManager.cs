@@ -21,10 +21,11 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject choise;
 
     [Header("In Script")]
-    [SerializeField] private string dialogueType;
-    [SerializeField] private string[] sentences;
-    [SerializeField] private float wordSpeed;
-    [SerializeField] private int index;
+    private string dialogueType;
+    private string[] sentences;
+    private float wordSpeed;
+    private int index;
+    private RecipeSO recipePapers;
 
     public bool isDialoguePlaying { get; private set; }
 
@@ -67,7 +68,7 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                wordSpeed = 0.01f;
+                wordSpeed = 0.05f;
             }
         }
 
@@ -76,6 +77,10 @@ public class DialogueManager : MonoBehaviour
         //    choise.SetActive(true);
         //    isDialoguePlaying = false;
         //}
+    }
+    public void TakeRecipe(RecipeSO recipeSOs)
+    {
+        recipePapers = recipeSOs;
     }
 
     public void EnterDialogueMode(DialogueSO dialogue)
@@ -112,6 +117,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         index = 0;
         wordSpeed = 0.1f;
+        AddRecipe(recipePapers);
     }
 
     private void ContinueStory()
@@ -129,6 +135,16 @@ public class DialogueManager : MonoBehaviour
         {
             ExitDialogueMode();
         } 
+    }
+
+    public void AddRecipe(RecipeSO recipeSO)
+    {
+        if (recipePapers != null)
+        {
+            RecipeManager.instance.AddRecipe(recipePapers);
+            GameManager.instance.SaveDataRecipe(recipePapers);
+            recipePapers = null;
+        }
     }
 
     public void OnClickChoise0()

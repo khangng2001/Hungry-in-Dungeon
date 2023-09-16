@@ -142,5 +142,7 @@ MonoBehaviour:
   - {fileID: 4179150854586636519, guid: ed70aea0becc53f43b78ee5916287c2c, type: 3}
   - {fileID: 7699208396289725609, guid: 36a62871a33bf9a41b66f4993091807f, type: 3}
   - {fileID: 4617297448524556584, guid: ccf6ea89aceb60848a3986b913d5e9c4, type: 3}
+  - {fileID: 4179150854586636519, guid: 5ce88522af1c64a49a24b4d916287e8c, type: 3}
+  - {fileID: 4617297448524556584, guid: a02e30fc949c70f48bce373ffda2325e, type: 3}
   maxHealth: 100
-  eatingSound: {fileID: 8300000, guid: b727aa577a5de00489bd3061c818f65c, type: 3}
+  eatingSound: {fileID: 8300000, guid: a9e962f6bd590d94a9d61951bddd5941, type: 3}

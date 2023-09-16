@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cue: {fileID: 8524018846880772892}
-  dialogue: {fileID: 11400000, guid: c055e94b08581fb45bd34556c04438f7, type: 2}
+  dialogue: {fileID: 11400000, guid: 03a28daed323f0849a28a7ed34eda1f3, type: 2}
 --- !u!1 &8524018847529040733
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +250,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8524018847529040722}
-  - component: {fileID: 4016384573971045631}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -276,16 +275,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4016384573971045631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8524018847529040733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b61bae8f258d624b91f55b38b878408, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  recipePapers: []
