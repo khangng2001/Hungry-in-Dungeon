@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 5341397942411778055}
   - component: {fileID: 5341397942411778057}
   - component: {fileID: 5341397942411778056}
+  - component: {fileID: 8805158734801349875}
   - component: {fileID: 5341397942411778052}
   m_Layer: 0
   m_Name: Campfire
@@ -332,7 +333,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00000166893, y: -1.0442939}
+  m_Offset: {x: 0.08790946, y: -0.29075766}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -343,7 +344,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.593968, y: 3.286683}
+  m_Size: {x: 4.7697835, y: 4.7937555}
   m_EdgeRadius: 0
 --- !u!212 &5341397942411778057
 SpriteRenderer:
@@ -418,6 +419,102 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &8805158734801349875
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341397942411778059}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f9aaf0e5ac468e1468eefac346d809d8, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 0
+  MaxDistance: 7
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &5341397942411778052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,8 +539,7 @@ MonoBehaviour:
   cookBtn: {fileID: 0}
   cookBar: {fileID: 0}
   open: 0
-  cookingProgressSound: {fileID: 8300000, guid: bd452268543a5204b8d751417c849bcc, type: 3}
-  cookingFinishedSound: {fileID: 8300000, guid: 765f0ccb9316f9c4eaf3ecb83d51adf8, type: 3}
+  cookingFinishedSound: {fileID: 8300000, guid: d77f2f0962cbbfe43bd647b6468f8199, type: 3}
   itemList:
   - {fileID: 0}
   - {fileID: 0}
@@ -453,11 +549,33 @@ MonoBehaviour:
   - nulleggnull
   - nullnullegg
   - eggonionnull
+  - eggnullonion
+  - onioneggnull
+  - onionnullegg
+  - nulleggonion
+  - nulleggonion
+  - eggonionuncookedbeef
+  - egguncookedbeefonion
+  - onionegguncookedbeef
+  - onionuncookedbeefegg
+  - uncookedbeefeggonion
+  - uncookedbeefeggonion
   recipeResults:
   - {fileID: 11400000, guid: 41ef95938417e3847a46c40265834742, type: 2}
   - {fileID: 11400000, guid: 41ef95938417e3847a46c40265834742, type: 2}
   - {fileID: 11400000, guid: 41ef95938417e3847a46c40265834742, type: 2}
   - {fileID: 11400000, guid: 3795c5134c789bd4b8c350c989a8f737, type: 2}
+  - {fileID: 11400000, guid: 3795c5134c789bd4b8c350c989a8f737, type: 2}
+  - {fileID: 11400000, guid: 3795c5134c789bd4b8c350c989a8f737, type: 2}
+  - {fileID: 11400000, guid: 3795c5134c789bd4b8c350c989a8f737, type: 2}
+  - {fileID: 11400000, guid: 3795c5134c789bd4b8c350c989a8f737, type: 2}
+  - {fileID: 11400000, guid: 3795c5134c789bd4b8c350c989a8f737, type: 2}
+  - {fileID: 11400000, guid: 551ee212f153feb44ab9f01e4f15ead2, type: 2}
+  - {fileID: 11400000, guid: 551ee212f153feb44ab9f01e4f15ead2, type: 2}
+  - {fileID: 11400000, guid: 551ee212f153feb44ab9f01e4f15ead2, type: 2}
+  - {fileID: 11400000, guid: 551ee212f153feb44ab9f01e4f15ead2, type: 2}
+  - {fileID: 11400000, guid: 551ee212f153feb44ab9f01e4f15ead2, type: 2}
+  - {fileID: 11400000, guid: 551ee212f153feb44ab9f01e4f15ead2, type: 2}
   inventoryItemPrefab: {fileID: 1501300417021963823, guid: ba2015c2943fb4747914db4a2d191434, type: 3}
   playerMask:
     serializedVersion: 2

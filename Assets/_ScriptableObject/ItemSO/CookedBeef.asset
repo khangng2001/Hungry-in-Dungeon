@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   stackable: 1
-  image: {fileID: 21300000, guid: d154ed9b00731684c942a377c753d236, type: 3}
+  image: {fileID: 21300000, guid: e58b608368cb48044842701ddda7b45e, type: 3}
   id: cookedbeef
   health: 0
   stamina: 0

@@ -101,6 +101,8 @@ public class CookingManager : MonoBehaviour
     {
         if (open)
         {
+            CheckHowMuchRecipePlayerHas();
+
             switch (state)
             {
                 case State.Idle:
@@ -236,8 +238,27 @@ public class CookingManager : MonoBehaviour
         }
     }
 
-    /*private void OnCollisionEnter2D(Collision2D collision)
+    private void CheckHowMuchRecipePlayerHas()
     {
-        DataPersistence.instance.SaveGame();
-    }*/
+        int recipes = GameManager.instance.recipes.Count;
+        UnactiveCookingSlot(recipes);
+    }
+
+    private void UnactiveCookingSlot(int recipes)
+    {
+        int maxRecipes = 3;
+        for (int i = 0;  i < (maxRecipes-recipes); i++)
+        {
+            cookingSlots[i].gameObject.SetActive(false);
+        }
+    }
+
+    //this void will execute when player receives recipe
+    public void ActiveCookingSlot()
+    {
+        for (int i = 0; i < cookingSlots.Length; i++)
+        {
+            cookingSlots[i].gameObject.SetActive(true);
+        }
+    }
 }
