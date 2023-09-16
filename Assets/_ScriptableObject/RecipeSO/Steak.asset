@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358f41ef66b9a0a4cbbe014af6fc6246, type: 3}
   m_Name: Steak
   m_EditorClassIdentifier: 
-  <RecipeImage>k__BackingField: {fileID: 21300000, guid: d154ed9b00731684c942a377c753d236, type: 3}
+  <RecipeImage>k__BackingField: {fileID: 21300000, guid: 8d74461f26e326d498c5e37aa2e46efb, type: 3}
   <Title>k__BackingField: Steak
-  <Benefit>k__BackingField: "Gain 5 Health, \n3 Stamina"
+  <Benefit>k__BackingField: "Gain 25 Health, \n5 Stamina"
   <Ingredient>k__BackingField: 'Ingredient
 
     Egg x1
