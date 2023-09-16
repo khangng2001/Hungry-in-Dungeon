@@ -106,11 +106,6 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public void SaveDataRecipe(RecipeSO recipeSO)
     {
         recipes.Add(recipeSO);
-        /*for (int i = 0; i < recipes.Count; i++)
-        {
-            recipes[i] = RecipeManager.instance.SaveDataRecipe(i);
-            recipes.Add(recipes[i]);
-        }*/
     }
     public void LoadDataRecipe()
     {
